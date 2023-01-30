@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import { useDebouncedValue } from '@mantine/hooks';
 import z from 'zod';
 import { styled } from '../../../stitches.config';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -15,10 +16,14 @@ import {
 import { SearchSchema } from '@utils/schema';
 import { api } from '@utils/api';
 import { spinAnimation } from '@utils/keyframes';
+import { Box } from '@components/ui/Box';
+import SearchResults from './SearchResults';
+import { useState } from 'react';
 
 type SearchType = z.infer<typeof SearchSchema>;
 
 const Search = () => {
+  const [resultsOpen, setResultsOpen] = useState(false);
   const {
     register,
     handleSubmit,
@@ -28,22 +33,26 @@ const Search = () => {
     resolver: zodResolver(SearchSchema),
   });
 
-  const { mutate, isLoading, data, isError } =
-    api.artistRouter.search.useMutation();
+  const { mutate, isLoading, data, isError, error } =
+    api.artistRouter.search.useMutation({
+      onSuccess: () => {
+        setResultsOpen(true);
+      },
+    });
 
   async function onSubmit(data: SearchType) {
-    reset();
+    // reset();
     mutate(data);
   }
 
   return (
     <>
-      <Container pt="lg" size="lg">
+      <Container pt="2xl" size="lg">
         <form onSubmit={handleSubmit(onSubmit)}>
           <Flex
             css={{ borderBottom: '1px solid $gray9', height: '3.25rem' }}
             align="center"
-            gap="md"
+            gap="sm"
           >
             <div>
               <IconSearch size={20} color="#00000090" />
@@ -60,8 +69,12 @@ const Search = () => {
             />
             <SubmitButton isLoading={isLoading} />
           </Flex>
-          {errors.artist && <ErrorsUI errors={errors.artist.message} />}
+          {errors.artist && <ErrorMessage errors={errors.artist.message} />}
+          {isError && <ErrorMessage errors={error.message} />}
         </form>
+        {resultsOpen && data && (
+          <SearchResults setResultsOpen={setResultsOpen} items={data.items} />
+        )}
       </Container>
     </>
   );
@@ -73,7 +86,7 @@ interface ErrorsUIProps {
   errors: string | undefined;
 }
 
-function ErrorsUI({ errors }: ErrorsUIProps) {
+function ErrorMessage({ errors }: ErrorsUIProps) {
   return (
     <Flex mt="md" align="center" gap="sm">
       <IconAlertCircle size={16} color="crimson" />
@@ -99,7 +112,7 @@ function SubmitButton({ isLoading }: SubmitButtonProps) {
   return (
     <>
       {isLoading ? (
-        <IconButton type="button" disabled>
+        <IconButton size="sm" type="button" disabled>
           <IconReload
             style={{
               animation: spinAnimation,
@@ -109,7 +122,7 @@ function SubmitButton({ isLoading }: SubmitButtonProps) {
           />
         </IconButton>
       ) : (
-        <IconButton type="submit">
+        <IconButton size="sm" type="submit">
           <IconArrowBadgeRight size={20} color="#00000090" />
         </IconButton>
       )}

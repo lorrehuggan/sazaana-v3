@@ -48,14 +48,23 @@ export const Flex = styled('div', {
       },
     },
     gap: {
+      xs: {
+        gap: '$xs',
+      },
       sm: {
-        gap: '$1',
+        gap: '$sm',
       },
       md: {
-        gap: '$2',
+        gap: '$md',
       },
       lg: {
-        gap: '$3',
+        gap: '$lg',
+      },
+      xl: {
+        gap: '$xl',
+      },
+      '2xl': {
+        gap: '$2xl',
       },
     },
     full: {
@@ -67,25 +76,43 @@ export const Flex = styled('div', {
       },
     },
     mt: {
+      xs: {
+        marginTop: '$xs',
+      },
       sm: {
-        marginTop: '$1',
+        marginTop: '$sm',
       },
       md: {
-        marginTop: '$2',
+        marginTop: '$md',
       },
       lg: {
-        marginTop: '$3',
+        marginTop: '$lg',
+      },
+      xl: {
+        marginTop: '$xl',
+      },
+      '2xl': {
+        marginTop: '$2xl',
       },
     },
     mb: {
+      xs: {
+        marginBottom: '$xs',
+      },
       sm: {
-        marginBottom: '$1',
+        marginBottom: '$sm',
       },
       md: {
-        marginBottom: '$2',
+        marginBottom: '$md',
       },
       lg: {
-        marginBottom: '$3',
+        marginBottom: '$lg',
+      },
+      xl: {
+        marginBottom: '$xl',
+      },
+      '2xl': {
+        marginBottom: '$2xl',
       },
     },
   },

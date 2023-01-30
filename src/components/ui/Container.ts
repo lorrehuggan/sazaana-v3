@@ -20,57 +20,121 @@ export const Container = styled('div', {
     },
     p: {
       sm: {
-        padding: '$3',
+        padding: '$sm',
       },
       md: {
-        padding: '$6',
+        padding: '$md',
       },
       lg: {
-        padding: '$9',
+        padding: '$lg',
+      },
+      xl: {
+        padding: '$xl',
+      },
+      '2xl': {
+        padding: '$2xl',
       },
     },
     pt: {
       sm: {
-        paddingTop: '$3',
+        paddingTop: '$sm',
       },
       md: {
-        paddingTop: '$6',
+        paddingTop: '$md',
       },
       lg: {
-        paddingTop: '$9',
+        paddingTop: '$lg',
+      },
+      xl: {
+        paddingTop: '$xl',
+      },
+      '2xl': {
+        paddingTop: '$2xl',
       },
     },
     pb: {
       sm: {
-        paddingBottom: '$3',
+        paddingBottom: '$sm',
       },
       md: {
-        paddingBottom: '$6',
+        paddingBottom: '$md',
       },
       lg: {
-        paddingBottom: '$9',
+        paddingBottom: '$lg',
+      },
+      xl: {
+        paddingBottom: '$xl',
+      },
+      '2xl': {
+        paddingBottom: '$2xl',
       },
     },
     pl: {
       sm: {
-        paddingLeft: '$3',
+        paddingLeft: '$sm',
       },
       md: {
-        paddingLeft: '$6',
+        paddingLeft: '$md',
       },
       lg: {
-        paddingLeft: '$9',
+        paddingLeft: '$lg',
+      },
+      xl: {
+        paddingLeft: '$xl',
+      },
+      '2xl': {
+        paddingLeft: '$2xl',
       },
     },
     pr: {
       sm: {
-        paddingRight: '$3',
+        paddingRight: '$sm',
       },
       md: {
-        paddingRight: '$6',
+        paddingRight: '$md',
       },
       lg: {
-        paddingRight: '$9',
+        paddingRight: '$lg',
+      },
+      xl: {
+        paddingRight: '$xl',
+      },
+      '2xl': {
+        paddingRight: '$2xl',
+      },
+    },
+    mt: {
+      sm: {
+        marginTop: '$sm',
+      },
+      md: {
+        marginTop: '$md',
+      },
+      lg: {
+        marginTop: '$lg',
+      },
+      xl: {
+        marginTop: '$xl',
+      },
+      '2xl': {
+        marginTop: '$2xl',
+      },
+    },
+    mb: {
+      sm: {
+        marginBottom: '$sm',
+      },
+      md: {
+        marginBottom: '$md',
+      },
+      lg: {
+        marginBottom: '$lg',
+      },
+      xl: {
+        marginBottom: '$xl',
+      },
+      '2xl': {
+        marginBottom: '$2xl',
       },
     },
   },

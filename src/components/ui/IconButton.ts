@@ -6,28 +6,34 @@ export const IconButton = styled('button', {
   justifyContent: 'center',
   borderRadius: '4px',
   cursor: 'pointer',
-  transition: 'all 200ms ease-out',
+  transition: '200ms ease-out',
+  transitionProperty: 'background-color, color',
   variants: {
     size: {
+      xs: {
+        width: '$xs',
+        height: '$xs',
+        padding: '0.125rem',
+      },
       sm: {
-        width: '$5',
-        height: '$5',
-        padding: '$1',
+        width: '$sm',
+        height: '$sm',
+        padding: '$xs',
       },
       md: {
-        width: '$6',
-        height: '$6',
-        padding: '$2',
+        width: '$md',
+        height: '$md',
+        padding: '$sm',
       },
       lg: {
-        width: '$7',
-        height: '$7',
-        padding: '$3',
+        width: '$lg',
+        height: '$lg',
+        padding: '$md',
       },
       xl: {
-        width: '$8',
-        height: '$8',
-        padding: '$4',
+        width: '$xl',
+        height: '$xl',
+        padding: '$lg',
       },
     },
     variant: {

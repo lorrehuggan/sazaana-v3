@@ -21,6 +21,10 @@ const globalStyles = globalCss({
   body: {
     backgroundColor: '#fefce1',
   },
+  a: {
+    textDecoration: 'none',
+    all: 'unset',
+  },
 });
 
 const MyApp: AppType<{ session: Session | null }> = ({

@@ -31,24 +31,21 @@ export const {
       sans: inter.className,
     },
     space: {
-      1: '0.25rem',
-      2: '0.5rem',
-      3: '0.75rem',
-      4: '1rem',
-      5: '1.25rem',
-      6: '1.5rem',
-      7: '1.75rem',
-      8: '2rem',
-      9: '2.25rem',
-      lg: '3rem',
-      xl: '4rem',
+      xs: '0.25rem',
+      sm: '0.405rem',
+      md: '0.655rem',
+      lg: '1.06rem',
+      xl: '1.715rem',
+      '2xl': '2.775rem',
+      '3xl': '4.491rem',
     },
   },
   media: {
-    bp1: '(min-width: 640px)',
-    bp2: '(min-width: 768px)',
-    bp3: '(min-width: 1024px)',
-    bp4: '(min-width: 1280px)',
+    sm: '(max-width: 640px)',
+    md: '(max-width: 768px)',
+    lg: '(max-width: 1024px)',
+    xl: '(max-width: 1280px)',
+    '2xl': '(max-width: 1536px)',
   },
   utils: {
     m: (value: string) => ({ margin: value }),
@@ -75,23 +72,39 @@ export const {
     textLeft: () => ({ textAlign: 'left' }),
     textColor: (value: string) => ({ color: value }),
     rounded: () => ({ borderRadius: '0.25rem' }),
-    sy: (value: string) => ({
-      '--space-y-reverse': 0,
+    flexCenter: () => ({
       display: 'flex',
-      flexDirection: 'column-reverse',
-      '& > * + *': {
-        marginTop: `calc(${value} * calc(1 - var(--space-y-reverse)))`,
-        marginBottom: `calc(${value} * var(--space-y-reverse))`,
-      },
+      alignItems: 'center',
+      justifyContent: 'center',
     }),
-    sx: (value: string) => ({
-      '--space-x-reverse': 0,
+    flexColumn: () => ({
       display: 'flex',
-      flexDirection: 'row-reverse',
-      '& > * + *': {
-        marginLeft: `calc(${value} * calc(1 - var(--space-x-reverse)))`,
-        marginRight: `calc(${value} * var(--space-x-reverse))`,
-      },
+      flexDirection: 'column',
+      justifyContent: 'center',
     }),
+    flexRow: () => ({
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'center',
+    }),
+    flexBetween: () => ({
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    }),
+    sy: (value: string) => {
+      return {
+        '& > * + *': {
+          marginTop: value,
+        },
+      };
+    },
+    sx: (value: string) => {
+      return {
+        '& > * + *': {
+          marginRight: value,
+        },
+      };
+    },
   },
 });

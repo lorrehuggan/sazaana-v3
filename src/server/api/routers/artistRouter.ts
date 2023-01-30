@@ -1,19 +1,79 @@
 import { SearchSchema } from '@utils/schema';
 import { spotifyApi } from '@utils/spotify';
+import z, { ZodError } from 'zod';
 import { createTRPCRouter, publicProcedure, protectedProcedure } from '../trpc';
 
 export const artistRouter = createTRPCRouter({
   search: publicProcedure.input(SearchSchema).mutation(async ({ input }) => {
-    const client = await spotifyApi.clientCredentialsGrant();
-    spotifyApi.setAccessToken(client.body.access_token);
+    let artists_id: string[] = [];
 
-    const response = await spotifyApi.searchArtists(input.artist, {
-      market: 'US',
-      limit: 12,
-    });
+    try {
+      const client = await spotifyApi.clientCredentialsGrant();
+      spotifyApi.setAccessToken(client.body.access_token);
 
-    return {
-      artist: response.body.artists,
-    };
+      const response = await spotifyApi.searchTracks(`artist:${input.artist}`, {
+        market: 'US',
+        limit: 12,
+      });
+
+      if (response.statusCode !== 200) {
+        throw new Error('Bad response');
+      }
+
+      const data = response.body.tracks?.items;
+
+      if (!data) {
+        throw new Error('No data found');
+      }
+
+      data.forEach((item) => {
+        if (item.artists[0]) {
+          artists_id = [...artists_id, item.artists[0].id];
+        } else {
+          throw new Error('No artist found');
+        }
+      });
+
+      artists_id = [...new Set(artists_id)];
+
+      const items = await Promise.all(
+        artists_id.map(async (id) => {
+          const artist = await spotifyApi.getArtist(id);
+          return artist.body;
+        })
+      );
+
+      return {
+        items,
+      };
+    } catch (error) {
+      if (error instanceof ZodError) {
+        throw new Error(error.message);
+      }
+      console.log(error);
+      throw new Error('Something went wrong');
+    }
   }),
+  getArtistById: publicProcedure
+    .input(z.object({ id: z.string() }))
+    .query(async ({ input }) => {
+      try {
+        const client = await spotifyApi.clientCredentialsGrant();
+        spotifyApi.setAccessToken(client.body.access_token);
+
+        const response = await spotifyApi.getArtist(input.id);
+
+        if (response.statusCode !== 200) {
+          throw new Error('Bad response');
+        }
+
+        return response.body;
+      } catch (error) {
+        if (error instanceof ZodError) {
+          throw new Error(error.message);
+        }
+        console.log(error);
+        throw new Error('Something went wrong');
+      }
+    }),
 });

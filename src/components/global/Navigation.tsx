@@ -2,7 +2,7 @@ import { Container } from '@components/ui/Container';
 import { Flex } from '@components/ui/Flex';
 import { Text } from '@components/ui/Text';
 import { styled, theme } from '../../../stitches.config';
-import { IconBrandSpotify } from '@tabler/icons-react';
+import { IconBrandSpotify, IconMenu } from '@tabler/icons-react';
 import { IconButton } from '@components/ui/IconButton';
 
 const Navigation = () => {
@@ -16,16 +16,16 @@ const Navigation = () => {
           alignItems: 'center',
         }}
       >
-        <Flex justify="between" align="center" full>
-          <Text as="h5" size="h5">
+        <Flex align="center" justify="between" full>
+          <Text
+            fontWeight="200"
+            as="h4"
+            size="h4"
+            css={{ letterSpacing: '-4px' }}
+          >
             sazaana
           </Text>
-          <IconButton variant="default" size="lg">
-            <IconBrandSpotify
-              color={theme.colors.primary.toString()}
-              size={32}
-            />
-          </IconButton>
+          <IconMenu color="#00000070" size={24} />
         </Flex>
       </Container>
     </Nav>

@@ -4,11 +4,11 @@ import { Text } from '@components/ui/Text';
 
 const Heading = () => {
   return (
-    <Container pt="lg" size="lg">
-      <Text as="h3" size="h3">
-        <Span>Discover</Span> Your Next Favorite Artist:
+    <Container pt="2xl" size="lg">
+      <Text as="h1" size="h2">
+        <Span>Discover</Span> Your Next Favorite Song:
       </Text>
-      <Text css={{ mt: '$2' }} as="h4" size="h4">
+      <Text color="faded" css={{ mt: '$lg' }} as="h4" size="h4">
         Create a personalised music experience by searching for your favorite
         artist...
       </Text>
