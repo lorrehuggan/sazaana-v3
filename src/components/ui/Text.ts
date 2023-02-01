@@ -58,6 +58,17 @@ export const Text = styled('h1', {
         color: '$gray10',
       },
     },
+    textAlign: {
+      center: {
+        textAlign: 'center',
+      },
+      right: {
+        textAlign: 'right',
+      },
+      left: {
+        textAlign: 'left',
+      },
+    },
   },
   defaultVariants: {
     size: 'p',

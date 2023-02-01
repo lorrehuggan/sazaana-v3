@@ -18,10 +18,11 @@ const Navigation = () => {
       >
         <Flex align="center" justify="between" full>
           <Text
+            color="faded"
             fontWeight="200"
             as="h4"
-            size="h4"
-            css={{ letterSpacing: '-4px' }}
+            size="h5"
+            css={{ letterSpacing: '-1px' }}
           >
             sazaana
           </Text>

@@ -17,6 +17,7 @@ const SearchResults: FC<Props> = ({ items, setResultsOpen }) => {
         maxHeight: '12.75rem',
         sy: '$sm',
         overflowY: 'scroll',
+        position: 'relative',
       }}
       padding="md"
       border="full"

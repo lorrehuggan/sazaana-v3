@@ -106,5 +106,8 @@ export const {
         },
       };
     },
+    linearGradient: (value: string) => ({
+      background: `linear-gradient(${value})`,
+    }),
   },
 });
