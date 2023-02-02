@@ -47,7 +47,7 @@ const Search = () => {
 
   return (
     <>
-      <Container pt="2xl" size="lg">
+      <Container as="section" pt="2xl" size="lg">
         <form onSubmit={handleSubmit(onSubmit)}>
           <Flex
             css={{ borderBottom: '1px solid $gray9', height: '3.25rem' }}

@@ -4,10 +4,7 @@ import { styled } from '../../../stitches.config';
 const Footer = () => {
   return (
     <Foot>
-      <Container
-        size="lg"
-        css={{ height: '100%', display: 'flex', alignItems: 'center' }}
-      >
+      <Container size="lg" flex="row" align="center" css={{ height: '100%' }}>
         footer
       </Container>
     </Foot>

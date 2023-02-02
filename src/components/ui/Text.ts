@@ -69,6 +69,26 @@ export const Text = styled('h1', {
         textAlign: 'left',
       },
     },
+    hover: {
+      fade: {
+        transition: 'color 0.3s ease-in-out',
+        '&:hover': {
+          color: '$gray10',
+        },
+        '&:active': {
+          color: '$gray12',
+        },
+      },
+      dark: {
+        transition: 'color 0.3s ease-in-out',
+        '&:hover': {
+          color: '$gray12',
+        },
+        '&:active': {
+          color: '$gray8',
+        },
+      },
+    },
   },
   defaultVariants: {
     size: 'p',

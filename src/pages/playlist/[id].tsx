@@ -5,6 +5,9 @@ import Heading from '@components/home/Heading';
 import Search from '@components/home/Search';
 import { api } from '@utils/api';
 import CurrentArtistCard from '@components/playlist/CurrentArtistCard';
+import PlaylistBody from '@components/playlist/PlaylistBody';
+import { useCurrentArtistStore } from '@state/currentArtist';
+import { useEffect } from 'react';
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { id } = ctx.query;
@@ -21,9 +24,14 @@ interface Props {
 }
 
 const Playlist: NextPage<Props> = ({ id }) => {
+  const setId = useCurrentArtistStore((state) => state.setId);
   const { data: currentArtistData, isLoading: currentArtistLoading } =
     api.artistRouter.getByID.useQuery({ id });
-  const { data } = api.artistRouter.getPlaylist.useQuery({ id });
+
+  useEffect(() => {
+    setId(id);
+  }, []);
+
   return (
     <>
       <NextSeo
@@ -33,13 +41,8 @@ const Playlist: NextPage<Props> = ({ id }) => {
       <MainLayout>
         <Heading />
         <Search />
-        {currentArtistData && (
-          <CurrentArtistCard
-            isLoading={currentArtistLoading}
-            data={currentArtistData}
-          />
-        )}
-        {/* {data && JSON.stringify(data, null, 2)} */}
+        <CurrentArtistCard />
+        <PlaylistBody />
       </MainLayout>
     </>
   );

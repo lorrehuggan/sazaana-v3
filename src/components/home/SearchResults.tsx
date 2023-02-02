@@ -26,17 +26,17 @@ const SearchResults: FC<Props> = ({ items, setResultsOpen }) => {
       {items.map((item, i) => (
         <div onClick={() => setResultsOpen(false)} key={i}>
           <Link href={`/playlist/${item.id}`}>
-            <Flex
+            <Box
               css={{
-                border: '1px solid $gray10',
-                padding: '$sm',
-                borderRadius: '4px',
                 transition: 'background-color 0.2s ease-out',
                 cursor: 'pointer',
                 '&:hover': {
                   backgroundColor: '$cyan6',
                 },
               }}
+              radius="sm"
+              padding="md"
+              border="full"
               gap="sm"
               align="center"
             >
@@ -60,7 +60,7 @@ const SearchResults: FC<Props> = ({ items, setResultsOpen }) => {
                 />
               </Box>
               <Text css={{ fontWeight: 'bold' }}>{item.name}</Text>
-            </Flex>
+            </Box>
           </Link>
         </div>
       ))}

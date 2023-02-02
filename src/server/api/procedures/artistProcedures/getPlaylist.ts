@@ -1,12 +1,14 @@
 import { spotifyApi } from '@utils/spotify';
 import z, { ZodError } from 'zod';
 import { publicProcedure } from '../../trpc';
+import { mockData } from '@utils/mockdata';
 
 export const getPlaylist = publicProcedure
   .input(z.object({ id: z.string() }))
   .query(async ({ input: { id } }) => {
     let relatedArtists: SpotifyApi.ArtistObjectFull[];
-    let relatedArtistsTopTracks = [] as SpotifyApi.ArtistsTopTracksResponse[];
+    let relatedArtistsTopTracks = [] as SpotifyApi.TrackObjectFull[];
+
     try {
       const client = await spotifyApi.clientCredentialsGrant();
       spotifyApi.setAccessToken(client.body.access_token);
@@ -28,19 +30,14 @@ export const getPlaylist = publicProcedure
         })
       );
 
-      getTopTracks.forEach((tracks) => {
-        relatedArtistsTopTracks.push(
-          {
-            ...tracks[1],
-          },
-          {
-            ...tracks[2],
-          },
-          {
-            ...tracks[3],
-          }
-        );
-      });
+      relatedArtistsTopTracks = getTopTracks.flat(1);
+
+      relatedArtistsTopTracks = relatedArtistsTopTracks
+        .map((a) => ({ sort: Math.random(), value: a }))
+        .sort((a, b) => a.sort - b.sort)
+        .map((a) => a.value);
+
+      relatedArtistsTopTracks = relatedArtistsTopTracks.slice(0, 10);
 
       const audioFeatures = await Promise.all(
         relatedArtistsTopTracks.map(async (track) => {
@@ -51,7 +48,16 @@ export const getPlaylist = publicProcedure
         })
       );
 
-      return relatedArtistsTopTracks;
+      const data = audioFeatures.map((feature, index) => {
+        return {
+          ...relatedArtistsTopTracks[index],
+          ...feature,
+        };
+      });
+
+      // const data = JSON.parse(mockData)
+
+      return data;
     } catch (error) {
       if (error instanceof ZodError) {
         throw new Error(error.message);

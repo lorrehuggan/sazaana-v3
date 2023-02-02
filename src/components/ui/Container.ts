@@ -137,6 +137,63 @@ export const Container = styled('div', {
         marginBottom: '$2xl',
       },
     },
+    flex: {
+      row: {
+        display: 'flex',
+        flexDirection: 'row',
+      },
+      column: {
+        display: 'flex',
+        flexDirection: 'column',
+      },
+    },
+    justify: {
+      center: {
+        justifyContent: 'center',
+      },
+      between: {
+        justifyContent: 'space-between',
+      },
+    },
+    align: {
+      center: {
+        alignItems: 'center',
+      },
+      between: {
+        alignItems: 'space-between',
+      },
+    },
+    gap: {
+      sm: {
+        gap: '$sm',
+      },
+      md: {
+        gap: '$md',
+      },
+      lg: {
+        gap: '$lg',
+      },
+      xl: {
+        gap: '$xl',
+      },
+    },
+    height: {
+      full: {
+        height: '100%',
+      },
+      half: {
+        height: '50%',
+      },
+      auto: {
+        height: 'auto',
+      },
+      third: {
+        height: '33.333333%',
+      },
+      twoThirds: {
+        height: '66.666667%',
+      },
+    },
   },
   defaultVariants: {
     size: 'md',

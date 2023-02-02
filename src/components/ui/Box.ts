@@ -1,7 +1,6 @@
 import { styled } from '../../../stitches.config';
 
 export const Box = styled('div', {
-  borderRadius: '0.25rem',
   variants: {
     width: {
       full: {
@@ -15,6 +14,12 @@ export const Box = styled('div', {
       },
       quarter: {
         width: '25%',
+      },
+      threeQuarters: {
+        width: '75%',
+      },
+      twoThirds: {
+        width: '66.666%',
       },
     },
     padding: {
@@ -88,5 +93,140 @@ export const Box = styled('div', {
         marginTop: '$2xl',
       },
     },
+    mb: {
+      xs: {
+        marginBottom: '$xs',
+      },
+      sm: {
+        marginBottom: '$sm',
+      },
+      md: {
+        marginBottom: '$md',
+      },
+      lg: {
+        marginBottom: '$lg',
+      },
+      xl: {
+        marginBottom: '$xl',
+      },
+      '2xl': {
+        marginBottom: '$2xl',
+      },
+    },
+    radius: {
+      none: {
+        borderRadius: '0px',
+      },
+      sm: {
+        borderRadius: '4px',
+      },
+      md: {
+        borderRadius: '8px',
+      },
+      lg: {
+        borderRadius: '12px',
+      },
+    },
+    spaceY: {
+      xs: {
+        sy: '$xs',
+      },
+      sm: {
+        sy: '$sm',
+      },
+      md: {
+        sy: '$md',
+      },
+      lg: {
+        sy: '$lg',
+      },
+      xl: {
+        sy: '$xl',
+      },
+    },
+    spaceX: {
+      xs: {
+        sx: '$xs',
+      },
+      sm: {
+        sx: '$sm',
+      },
+      md: {
+        sx: '$md',
+      },
+      lg: {
+        sx: '$lg',
+      },
+      xl: {
+        sx: '$xl',
+      },
+    },
+    gap: {
+      xs: {
+        gap: '$xs',
+      },
+      sm: {
+        gap: '$sm',
+      },
+      md: {
+        gap: '$md',
+      },
+      lg: {
+        gap: '$lg',
+      },
+      xl: {
+        gap: '$xl',
+      },
+      '2xl': {
+        gap: '$2xl',
+      },
+    },
+
+    flex: {
+      row: {
+        display: 'flex',
+        flexDirection: 'row',
+      },
+      column: {
+        display: 'flex',
+        flexDirection: 'column',
+      },
+    },
+    justify: {
+      center: {
+        justifyContent: 'center',
+      },
+      start: {
+        justifyContent: 'flex-start',
+      },
+      end: {
+        justifyContent: 'flex-end',
+      },
+      between: {
+        justifyContent: 'space-between',
+      },
+      around: {
+        justifyContent: 'space-around',
+      },
+    },
+    align: {
+      center: {
+        alignItems: 'center',
+      },
+      start: {
+        alignItems: 'flex-start',
+      },
+      end: {
+        alignItems: 'flex-end',
+      },
+    },
+    full: {
+      true: {
+        width: '100%',
+      },
+    },
+  },
+  defaultVariants: {
+    radius: 'none',
   },
 });

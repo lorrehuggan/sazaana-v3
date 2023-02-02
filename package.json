@@ -19,6 +19,7 @@
     "@stitches/react": "^1.2.8",
     "@tabler/icons-react": "^2.1.2",
     "@tanstack/react-query": "^4.20.0",
+    "@tanstack/react-query-devtools": "^4.24.4",
     "@trpc/client": "^10.8.1",
     "@trpc/next": "^10.8.1",
     "@trpc/react-query": "^10.8.1",
