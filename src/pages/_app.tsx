@@ -20,7 +20,7 @@ const globalStyles = globalCss({
     lineHeight: 1,
   },
   body: {
-    backgroundColor: '#fefce1',
+    backgroundColor: '#F4F5EC',
   },
   a: {
     textDecoration: 'none',

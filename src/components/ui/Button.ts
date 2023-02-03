@@ -8,6 +8,17 @@ export const Button = styled('button', {
   fontSize: '12px',
   fontWeight: '700',
   variants: {
+    width: {
+      full: {
+        width: '100%',
+      },
+      auto: {
+        width: 'auto',
+      },
+      half: {
+        width: '50%',
+      },
+    },
     size: {
       sm: {
         fontSize: '$sm',
@@ -72,17 +83,6 @@ export const Button = styled('button', {
           backgroundColor: '$baseHover',
           color: '#fff',
         },
-      },
-    },
-    width: {
-      full: {
-        width: '100%',
-      },
-      auto: {
-        width: 'auto',
-      },
-      half: {
-        width: '50%',
       },
     },
 

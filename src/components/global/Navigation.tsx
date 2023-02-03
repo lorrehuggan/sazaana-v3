@@ -17,12 +17,7 @@ const Navigation = () => {
         }}
       >
         <Box flex="row" align="center" justify="between" full>
-          <Text
-            fontWeight="200"
-            as="h4"
-            size="h5"
-            css={{ letterSpacing: '2px' }}
-          >
+          <Text as="h4" size="h4">
             sazaana
           </Text>
           <IconMenu color="#00000070" size={24} />

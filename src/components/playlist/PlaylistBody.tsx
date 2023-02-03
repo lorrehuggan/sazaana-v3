@@ -9,7 +9,7 @@ const PlaylistBody = () => {
   return (
     <Container flex="row" gap="lg" mt="xl" as="section" size="lg">
       <Box spaceY="md" css={{ flex: 1 }}>
-        <Box spaceY="md" radius="sm" padding="md">
+        <Box spaceY="md" radius="sm">
           <Text as="h6" size="h6">
             Keep This Playlist
           </Text>
@@ -36,7 +36,7 @@ const PlaylistBody = () => {
             Sign In To Save
           </Button>
         </Box>
-        <Box
+        {/* <Box
           full
           border="full"
           padding="md"
@@ -46,7 +46,7 @@ const PlaylistBody = () => {
           <Text as="p" size="p">
             Filter Songs
           </Text>
-        </Box>
+        </Box> */}
       </Box>
       <Tracklist />
     </Container>
