@@ -49,8 +49,10 @@ const Search = () => {
     <>
       <Container as="section" pt="2xl" size="lg">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Flex
-            css={{ borderBottom: '1px solid $gray9', height: '3.25rem' }}
+          <Box
+            flex="row"
+            border="bottom"
+            css={{ height: '3.25rem' }}
             align="center"
             gap="sm"
           >
@@ -68,7 +70,7 @@ const Search = () => {
               }}
             />
             <SubmitButton isLoading={isLoading} />
-          </Flex>
+          </Box>
           {errors.artist && <ErrorMessage errors={errors.artist.message} />}
           {isError && <ErrorMessage errors={error.message} />}
         </form>

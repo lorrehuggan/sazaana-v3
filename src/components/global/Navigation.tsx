@@ -16,7 +16,7 @@ const Navigation = () => {
           height: '100%',
         }}
       >
-        <Box align="center" justify="between" full>
+        <Box flex="row" align="center" justify="between" full>
           <Text
             fontWeight="200"
             as="h4"

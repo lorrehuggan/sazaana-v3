@@ -1,6 +1,6 @@
 import { type GetServerSideProps, type NextPage } from 'next';
 import { NextSeo } from 'next-seo';
-import MainLayout from '@components/layout/HomeLayout';
+import MainLayout from '@components/layout/MainLayout';
 import Heading from '@components/home/Heading';
 import Search from '@components/home/Search';
 import { api } from '@utils/api';
@@ -30,12 +30,16 @@ const Playlist: NextPage<Props> = ({ id }) => {
 
   useEffect(() => {
     setId(id);
-  }, []);
+  }, [id]);
 
   return (
     <>
       <NextSeo
-        title={`${currentArtistData?.name} | Sazaana` || 'Sazaana'}
+        title={`${
+          currentArtistLoading
+            ? 'Loading...'
+            : currentArtistData?.name + ' - ' + 'Sazaana Playlist'
+        }`}
         description={`Sazaana is a music discovery platform that lets you listen to millions of songs from around the world.`}
       />
       <MainLayout>

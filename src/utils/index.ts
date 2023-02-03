@@ -1,11 +1,3 @@
-export function randomizeArray<T>(array: Array<T>) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-}
-
 export function intToString(num: number): string {
   const numToString = num.toString().replace(/[^0-9.]/g, '');
 
@@ -33,7 +25,8 @@ export function intToString(num: number): string {
 }
 
 // function to truncate a string and add an ellipsis
-export function truncateString(str: string, num: number) {
+export function truncateString(str: string | undefined, num: number) {
+  if (!str) return;
   if (str.length <= num) {
     return str;
   }

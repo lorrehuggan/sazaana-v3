@@ -89,6 +89,16 @@ export const Text = styled('h1', {
         },
       },
     },
+    capitalize: {
+      true: {
+        textTransform: 'capitalize',
+      },
+    },
+    uppercase: {
+      true: {
+        textTransform: 'uppercase',
+      },
+    },
   },
   defaultVariants: {
     size: 'p',

@@ -15,6 +15,9 @@ export const {
   config,
 } = createStitches({
   theme: {
+    shadow: {
+      sm: '1px 1px 2px 2px rgba(0, 0, 0, 0.25)',
+    },
     colors: {
       ...gray,
       ...cyan,
@@ -22,6 +25,10 @@ export const {
       ...grass,
       ...plum,
       primary: '$cyan8',
+      primaryHover: '$cyan9',
+      primaryActive: '$cyan7',
+      base: '$gray12',
+      baseHover: '$gray11',
       secondary: '$plum8',
       error: '$red8',
       success: '$grass8',

@@ -219,10 +219,18 @@ export const Box = styled('div', {
       end: {
         alignItems: 'flex-end',
       },
+      between: {
+        alignItems: 'space-between',
+      },
     },
     full: {
       true: {
         width: '100%',
+      },
+    },
+    tall: {
+      true: {
+        height: '100%',
       },
     },
   },

@@ -1,5 +1,4 @@
 import { Box } from '@components/ui/Box';
-import { Flex } from '@components/ui/Flex';
 import { Text } from '@components/ui/Text';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -34,6 +33,7 @@ const SearchResults: FC<Props> = ({ items, setResultsOpen }) => {
                   backgroundColor: '$cyan6',
                 },
               }}
+              flex="row"
               radius="sm"
               padding="md"
               border="full"

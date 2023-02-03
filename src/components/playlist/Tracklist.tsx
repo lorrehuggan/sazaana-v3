@@ -1,11 +1,12 @@
 import Image from 'next/image';
-import { IconPlayerPlayFilled } from '@tabler/icons-react';
+import { IconPlayerPlay, IconPlayerPlayFilled } from '@tabler/icons-react';
 import { Box } from '@components/ui/Box';
 import { Flex } from '@components/ui/Flex';
 import { Text } from '@components/ui/Text';
 import { useCurrentArtistStore } from '@state/currentArtist';
 import { api } from '@utils/api';
 import { truncateString } from '@utils/index';
+import Link from 'next/link';
 
 const Tracklist = () => {
   const id = useCurrentArtistStore((state) => state.id);
@@ -82,7 +83,7 @@ const Tracklist = () => {
               )}
               {track.artists &&
                 track.artists.slice(0, 2).map((artist) => (
-                  <a key={artist.id}>
+                  <Link href={`/playlist/${artist.id}`} key={artist.id}>
                     <Text
                       hover="dark"
                       css={{
@@ -98,7 +99,7 @@ const Tracklist = () => {
                     >
                       {artist.name}
                     </Text>
-                  </a>
+                  </Link>
                 ))}
             </Flex>
           </Box>
@@ -108,7 +109,7 @@ const Tracklist = () => {
             </Text>
           </Box>
           <Box flex="column" align="end" justify="center" css={{ flex: 1 }}>
-            <IconPlayerPlayFilled size={24} />
+            <IconPlayerPlay color="#00000080" size={24} />
           </Box>
         </Flex>
       ))}

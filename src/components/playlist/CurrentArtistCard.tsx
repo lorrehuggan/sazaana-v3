@@ -37,7 +37,7 @@ const CurrentArtistCard = () => {
 
   return (
     <>
-      <Container as="section" mt="md" size="lg">
+      <Container as="section" mt="xl" size="lg">
         <Box flex="row" gap="sm">
           <Box flex="row">
             <Image
@@ -51,13 +51,21 @@ const CurrentArtistCard = () => {
               alt={data?.name}
             />
           </Box>
-          <Box gap="sm" css={{ minHeight: '60px' }} flex="column">
-            <Text size="h4">{data?.name}</Text>
-            <Text textAlign="right" fontWeight="400" color="faded" size="h6">
-              <Flex align="center" gap="xs">
+          <Box css={{ minHeight: '120px' }} justify="between" flex="column">
+            <Box css={{ sy: '$sm' }}>
+              <Text size="h4">{data?.name}</Text>
+              <Text fontWeight="400" color="faded" size="h6">
                 {data && intToString(data?.followers.total)} Followers
-              </Flex>
-            </Text>
+              </Text>
+              <Text color="faded">{`${data.popularity}% Popularity`}</Text>
+            </Box>
+            <Box flex="row" gap="sm">
+              {data.genres.slice(0, 2).map((genre) => (
+                <Text size="small" color="faded" capitalize key={genre}>
+                  {genre}
+                </Text>
+              ))}
+            </Box>
           </Box>
         </Box>
       </Container>

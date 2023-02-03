@@ -48,14 +48,19 @@ export const getPlaylist = publicProcedure
         })
       );
 
-      const data = audioFeatures.map((feature, index) => {
+      let data = audioFeatures.map((feature, index) => {
         return {
           ...relatedArtistsTopTracks[index],
           ...feature,
         };
       });
 
-      // const data = JSON.parse(mockData)
+      // let data = JSON.parse(mockData);
+
+      // data = data
+      //   .map((a) => ({ sort: Math.random(), value: a }))
+      //   .sort((a, b) => a.sort - b.sort)
+      //   .map((a) => a.value);
 
       return data;
     } catch (error) {
