@@ -25,7 +25,7 @@ const AudioPlayer = ({ audio, tempo }: AudioPlayerProps) => {
         setState(false);
       }
     };
-  }, [id]);
+  }, []);
 
   function playAudio(audio: string) {
     if (id === audio) {
@@ -62,6 +62,7 @@ const AudioPlayer = ({ audio, tempo }: AudioPlayerProps) => {
 
   function stopAudio() {
     Howler.stop();
+    setId('');
   }
 
   if (!audio) return null;
