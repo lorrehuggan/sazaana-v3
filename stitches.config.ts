@@ -33,6 +33,7 @@ export const {
       error: '$red8',
       success: '$grass8',
       text: '$gray11',
+      white: '#F4F5EC',
     },
     fonts: {
       sans: inter.className,

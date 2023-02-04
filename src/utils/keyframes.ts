@@ -6,3 +6,7 @@ export const spinKeyframe = keyframes({
 });
 
 export const spinAnimation = `${spinKeyframe} 1s linear infinite`;
+
+export function audioPlayingAnimation(time: number) {
+  return `${spinKeyframe} ${time}s linear infinite`;
+}

@@ -17,56 +17,106 @@ export const IconButton = styled('button', {
   transitionProperty: 'background-color, color',
   variants: {
     size: {
-      xs: {
-        width: '$xs',
-        height: '$xs',
-        padding: '0.125rem',
-      },
       sm: {
-        width: '$sm',
-        height: '$sm',
-        padding: '$xs',
+        fontSize: '$sm',
+        py: '$xs',
+        px: '$xs',
       },
       md: {
-        width: '$md',
-        height: '$md',
-        padding: '$sm',
+        fontSize: '$md',
+        py: '$md',
+        px: '$md',
       },
       lg: {
-        width: '$lg',
-        height: '$lg',
-        padding: '$md',
+        fontSize: '$lg',
+        py: '$lg',
+        px: '$lg',
       },
       xl: {
-        width: '$xl',
-        height: '$xl',
-        padding: '$lg',
+        fontSize: '$xl',
+        py: '$xl',
+        px: '$xl',
       },
     },
     variant: {
-      outline: {
-        border: '1px solid $gray9',
+      primary: {
+        backgroundColor: '$primary',
+        color: '$white',
         '&:hover': {
-          backgroundColor: '$cyan6',
+          backgroundColor: '$primaryHover',
         },
         '&:active': {
-          backgroundColor: '$cyan7',
-        },
-        '&:hover:disabled': {
-          backgroundColor: 'transparent',
-          cursor: 'none',
+          backgroundColor: '$primaryActive',
         },
       },
-      solid: {
-        backgroundColor: '$primary',
+      black: {
+        backgroundColor: '$gray12',
+        color: '#fff',
+        '&:hover': {
+          backgroundColor: '$baseHover',
+          color: '#fff',
+        },
+        '&:active': {
+          backgroundColor: '$baseHover',
+          color: '#fff',
+        },
       },
-      default: {
+    },
+
+    outlined: {
+      true: {
         backgroundColor: 'transparent',
+        border: '1px solid',
+      },
+    },
+
+    disabled: {
+      true: {
+        backgroundColor: '$gray4',
+        color: '$gray20',
+        cursor: 'not-allowed',
       },
     },
   },
+
+  compoundVariants: [
+    {
+      variant: 'black',
+      outlined: true,
+      css: {
+        backgroundColor: 'transparent',
+        color: '$gray12',
+        border: '1px solid $gray10',
+        '&:hover': {
+          backgroundColor: '$gray6',
+          color: '$baseHover',
+          border: '1px solid $baseHover',
+        },
+        '&:active': {
+          backgroundColor: '$gray4',
+          border: '1px solid $baseHover',
+        },
+      },
+    },
+    {
+      variant: 'primary',
+      outlined: true,
+      css: {
+        backgroundColor: 'transparent',
+        color: '$primary',
+        border: '1px solid $primary',
+        '&:hover': {
+          backgroundColor: '$cyan4',
+          color: '$primaryHover',
+          border: '1px solid $primaryHover',
+        },
+      },
+    },
+  ],
+
   defaultVariants: {
-    size: 'md',
-    variant: 'outline',
+    size: 'sm',
+    variant: 'primary',
+    outlined: true,
   },
 });

@@ -120,12 +120,12 @@ function SubmitButton({ isLoading }: SubmitButtonProps) {
               animation: spinAnimation,
             }}
             size={20}
-            color="#00000090"
+            color="#17171790"
           />
         </IconButton>
       ) : (
-        <IconButton size="sm" type="submit">
-          <IconArrowBadgeRight size={20} color="#00000090" />
+        <IconButton outlined variant="black" size="sm" type="submit">
+          <IconArrowBadgeRight size={20} color="#17171790" />
         </IconButton>
       )}
     </>

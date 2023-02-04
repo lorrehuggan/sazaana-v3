@@ -90,6 +90,7 @@ export const Button = styled('button', {
       },
     },
   },
+
   compoundVariants: [
     {
       variant: 'black',

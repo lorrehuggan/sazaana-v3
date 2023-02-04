@@ -7,6 +7,10 @@ import { useCurrentArtistStore } from '@state/currentArtist';
 import { api } from '@utils/api';
 import { truncateString } from '@utils/index';
 import Link from 'next/link';
+import { IconButton } from '@components/ui/IconButton';
+import AudioPlayer from './AudioPlayer';
+import { useEffect, useState } from 'react';
+import { useAudioPlayingState } from '@state/audioPlaying';
 
 const Tracklist = () => {
   const id = useCurrentArtistStore((state) => state.id);
@@ -22,7 +26,7 @@ const Tracklist = () => {
   if (error) return <PlaceHolder status="Error" />;
 
   return (
-    <Box spaceY="md" padding="md" width="twoThirds">
+    <Box spaceY="md" width="twoThirds">
       {data.map((track) => (
         <Flex gap="md" key={track.id}>
           <Image
@@ -92,9 +96,7 @@ const Tracklist = () => {
               {truncateString(track?.album?.name, 20)}
             </Text>
           </Box>
-          <Box flex="column" align="end" justify="center" css={{ flex: 1 }}>
-            <IconPlayerPlay color="#00000080" size={24} />
-          </Box>
+          <AudioPlayer audio={track.preview_url} tempo={track.tempo} />
         </Flex>
       ))}
     </Box>
@@ -129,6 +131,22 @@ const PlaceHolder = ({ status }: StatusProps) => {
               </Text>
             </a>
             <Flex align="center" gap="sm">
+              <Flex
+                as="span"
+                justify="center"
+                align="center"
+                css={{
+                  width: '8px',
+                  height: '8px',
+                  borderRadius: '4px',
+                  backgroundColor: '$gray9',
+                  fontSize: '10px',
+                  padding: '10px',
+                  color: '$gray1',
+                }}
+              >
+                L
+              </Flex>
               <Text
                 hover="dark"
                 css={{
@@ -152,7 +170,9 @@ const PlaceHolder = ({ status }: StatusProps) => {
             </Text>
           </Box>
           <Box flex="column" align="end" justify="center" css={{ flex: 1 }}>
-            <IconPlayerPlay color="#00000080" size={24} />
+            <IconButton disabled variant="black">
+              <IconPlayerPlay color="#00000080" size={20} />
+            </IconButton>
           </Box>
         </Flex>
       ))}
