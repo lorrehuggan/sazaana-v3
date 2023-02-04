@@ -17,25 +17,9 @@ const Tracklist = () => {
     }
   );
 
-  if (isLoading) {
-    return (
-      <Box padding="md" width="twoThirds">
-        <Text as="h4" size="h4">
-          Loading
-        </Text>
-      </Box>
-    );
-  }
+  if (isLoading) return <PlaceHolder status="Loading" />;
 
-  if (!data) {
-    return (
-      <Box padding="md" width="twoThirds">
-        <Text as="h4" size="h4">
-          Error
-        </Text>
-      </Box>
-    );
-  }
+  if (error) return <PlaceHolder status="Error" />;
 
   return (
     <Box spaceY="md" padding="md" width="twoThirds">
@@ -118,3 +102,60 @@ const Tracklist = () => {
 };
 
 export default Tracklist;
+
+interface StatusProps {
+  status: 'Loading' | 'Error';
+}
+
+const PlaceHolder = ({ status }: StatusProps) => {
+  return (
+    <Box spaceY="md" padding="md" width="twoThirds">
+      {new Array(10).fill(0).map((_, i) => (
+        <Flex key={i} gap="md">
+          <Box
+            css={{ width: '64px', height: '64px', backgroundColor: '$base' }}
+            radius="md"
+          ></Box>
+
+          <Box
+            css={{ width: '50%' }}
+            flex="column"
+            justify="center"
+            spaceY="xs"
+          >
+            <a>
+              <Text css={{ cursor: 'pointer' }} hover="fade" as="h6" size="h6">
+                {status}
+              </Text>
+            </a>
+            <Flex align="center" gap="sm">
+              <Text
+                hover="dark"
+                css={{
+                  cursor: 'pointer',
+                  transition: 'color 0.3s ease-in-out',
+                  '&:hover': {
+                    color: '$gray12',
+                  },
+                }}
+                color="faded"
+                as="p"
+                size="p"
+              >
+                {status}
+              </Text>
+            </Flex>
+          </Box>
+          <Box width="quarter" flex="column" justify="center">
+            <Text color="faded" as="small" size="small">
+              {status}
+            </Text>
+          </Box>
+          <Box flex="column" align="end" justify="center" css={{ flex: 1 }}>
+            <IconPlayerPlay color="#00000080" size={24} />
+          </Box>
+        </Flex>
+      ))}
+    </Box>
+  );
+};

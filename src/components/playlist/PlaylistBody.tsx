@@ -8,7 +8,7 @@ import Tracklist from './Tracklist';
 const PlaylistBody = () => {
   return (
     <Container flex="row" gap="lg" mt="xl" as="section" size="lg">
-      <Box spaceY="md" css={{ flex: 1 }}>
+      <Box spaceY="lg" css={{ flex: 1 }}>
         <Box spaceY="md" radius="sm">
           <Text as="h6" size="h6">
             Keep This Playlist
@@ -36,17 +36,11 @@ const PlaylistBody = () => {
             Sign In To Save
           </Button>
         </Box>
-        {/* <Box
-          full
-          border="full"
-          padding="md"
-          radius="sm"
-          css={{ height: '30rem' }}
-        >
+        <Box full padding="md" css={{ height: '30rem' }}>
           <Text as="p" size="p">
             Filter Songs
           </Text>
-        </Box> */}
+        </Box>
       </Box>
       <Tracklist />
     </Container>

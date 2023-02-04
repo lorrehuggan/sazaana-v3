@@ -1,12 +1,19 @@
 import { styled } from '../../../stitches.config';
 
 export const IconButton = styled('button', {
+  // Reset
+  appearance: 'none',
+  border: 'none',
+  margin: 0,
+  padding: 0,
+  background: 'none',
+  // Custom
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   borderRadius: '4px',
   cursor: 'pointer',
-  transition: '200ms ease-out',
+  transition: '300ms ease-out',
   transitionProperty: 'background-color, color',
   variants: {
     size: {

@@ -52,6 +52,12 @@ export const Box = styled('div', {
       bottom: {
         borderBottom: '1px solid $gray10',
       },
+      right: {
+        borderRight: '1px solid $gray10',
+      },
+      left: {
+        borderLeft: '1px solid $gray10',
+      },
     },
     m: {
       xs: {

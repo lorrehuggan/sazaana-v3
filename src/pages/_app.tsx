@@ -18,6 +18,7 @@ const globalStyles = globalCss({
     padding: 0,
     boxSizing: 'border-box',
     lineHeight: 1,
+    fontSmooth: 'always',
   },
   body: {
     backgroundColor: '#F4F5EC',
@@ -25,6 +26,9 @@ const globalStyles = globalCss({
   a: {
     textDecoration: 'none',
     all: 'unset',
+  },
+  li: {
+    listStyle: 'none',
   },
 });
 

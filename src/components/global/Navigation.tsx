@@ -4,6 +4,7 @@ import { Text } from '@components/ui/Text';
 import { styled, theme } from '../../../stitches.config';
 import { IconMenu } from '@tabler/icons-react';
 import { Box } from '@components/ui/Box';
+import Link from 'next/link';
 
 const Navigation = () => {
   return (
@@ -20,7 +21,36 @@ const Navigation = () => {
           <Text as="h4" size="h4">
             sazaana
           </Text>
-          <IconMenu color="#00000070" size={24} />
+          <Box>
+            <ul style={{ display: 'flex', gap: '8px' }}>
+              <li>
+                <Link href="/discover">
+                  <Text
+                    uppercase
+                    size="small"
+                    fontWeight="700"
+                    css={{ cursor: 'pointer' }}
+                    hover="fade"
+                  >
+                    Discover
+                  </Text>
+                </Link>
+              </li>
+              <li>
+                <Link href="/discover">
+                  <Text
+                    uppercase
+                    size="small"
+                    fontWeight="700"
+                    css={{ cursor: 'pointer' }}
+                    hover="fade"
+                  >
+                    Sign In
+                  </Text>
+                </Link>
+              </li>
+            </ul>
+          </Box>
         </Box>
       </Container>
     </Nav>

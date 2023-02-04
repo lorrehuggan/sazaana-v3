@@ -1,9 +1,6 @@
-import { FC } from 'react';
 import Image from 'next/image';
-import { type GetServerSideProps } from 'next';
 import { Box } from '@components/ui/Box';
 import { Container } from '@components/ui/Container';
-import { Flex } from '@components/ui/Flex';
 import { Text } from '@components/ui/Text';
 import { intToString } from '@utils/index';
 import { api } from '@utils/api';
@@ -11,29 +8,18 @@ import { useCurrentArtistStore } from '@state/currentArtist';
 
 const CurrentArtistCard = () => {
   const id = useCurrentArtistStore((state) => state.id);
-  const { data, isLoading, error } = api.artistRouter.getByID.useQuery({
-    id,
-  });
+  const { data, isLoading, error } = api.artistRouter.getByID.useQuery(
+    {
+      id,
+    },
+    {
+      refetchOnWindowFocus: false,
+    }
+  );
 
-  if (isLoading) {
-    return (
-      <Container as="section" mt="md" size="lg">
-        <Text size="h4" as="h4">
-          Loading
-        </Text>
-      </Container>
-    );
-  }
+  if (isLoading) return <PlaceHolder status="Loading" />;
 
-  if (error) {
-    return (
-      <Container mt="md" size="lg">
-        <Text size="h4" as="h4">
-          Error
-        </Text>
-      </Container>
-    );
-  }
+  if (error) return <PlaceHolder status="Error" />;
 
   return (
     <>
@@ -74,3 +60,33 @@ const CurrentArtistCard = () => {
 };
 
 export default CurrentArtistCard;
+
+interface StatusProps {
+  status: 'Loading' | 'Error';
+}
+
+const PlaceHolder = ({ status }: StatusProps) => {
+  return (
+    <Container as="section" mt="xl" size="lg">
+      <Box flex="row" gap="sm">
+        <Box
+          css={{ height: '120px', width: '120px', backgroundColor: '$base' }}
+          radius="md"
+          flex="row"
+        ></Box>
+        <Box css={{ minHeight: '120px' }} justify="between" flex="column">
+          <Box css={{ sy: '$sm' }}>
+            <Text size="h4">{status}</Text>
+            <Text fontWeight="400" color="faded" size="h6">
+              {status}
+            </Text>
+            <Text color="faded">{status}</Text>
+          </Box>
+          <Box flex="row" gap="sm">
+            {status}
+          </Box>
+        </Box>
+      </Box>
+    </Container>
+  );
+};

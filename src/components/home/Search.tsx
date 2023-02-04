@@ -133,6 +133,12 @@ function SubmitButton({ isLoading }: SubmitButtonProps) {
 }
 
 const Input = styled('input', {
+  // Reset
+  appearance: 'none',
+  border: 'none',
+  outline: 'none',
+  background: 'none',
+
   width: '100%',
   color: '$gray11',
 });
