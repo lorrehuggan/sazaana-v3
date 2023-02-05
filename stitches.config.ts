@@ -24,7 +24,7 @@ export const {
       ...red,
       ...grass,
       ...plum,
-      primary: '$cyan8',
+      primary: '$cyan7',
       primaryHover: '$cyan9',
       primaryActive: '$cyan7',
       base: '$gray12',

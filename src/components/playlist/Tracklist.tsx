@@ -1,18 +1,29 @@
+import Link from 'next/link';
 import Image from 'next/image';
-import { IconPlayerPlay, IconPlayerPlayFilled } from '@tabler/icons-react';
+import {
+  IconActivity,
+  IconBounceRight,
+  IconPlayerPlay,
+  IconSpeedboat,
+} from '@tabler/icons-react';
 import { Box } from '@components/ui/Box';
 import { Flex } from '@components/ui/Flex';
 import { Text } from '@components/ui/Text';
 import { useCurrentArtistStore } from '@state/currentArtist';
 import { api } from '@utils/api';
 import { convertMsToMinutesAndSeconds, truncateString } from '@utils/index';
-import Link from 'next/link';
 import { IconButton } from '@components/ui/IconButton';
 import AudioPlayer from './AudioPlayer';
-import { useEffect, useMemo, useState } from 'react';
 import { useAudioPlayingState } from '@state/audioPlaying';
+import { ToggleGroupItem, ToggleGroupRoot } from '@components/ui/ToggleGroup';
+import { useState } from 'react';
+import ToolTipButton from '@components/ui/ToolTip';
+import TracklistSort from './TracklistSort';
+import TracklistMetrics from './TracklistMetrics';
+import TrackListPlaceHolder from './TracklistPlaceholder';
 
 const Tracklist = () => {
+  const [value, setValue] = useState('');
   const id = useCurrentArtistStore((state) => state.id);
   const { id: trackPlayingId } = useAudioPlayingState((state) => state);
   const { data, isLoading, error } = api.artistRouter.getPlaylist.useQuery(
@@ -22,37 +33,26 @@ const Tracklist = () => {
     }
   );
 
-  if (isLoading) return <PlaceHolder status="Loading" />;
+  if (isLoading) return <TrackListPlaceHolder status="Loading" />;
 
-  if (error) return <PlaceHolder status="Error" />;
+  if (error) return <TrackListPlaceHolder status="Error" />;
 
   // const tempoSortedData = useMemo(() => {
   //   if (!data) return null;
   //   return data.sort((a, b) => a.tempo - b.tempo);
   // }, [data]);
 
-  // const danceabilitySortedData = useMemo(() => {
-  //   if (!data) return null;
-  //   return data.sort((a, b) => a.danceability - b.danceability);
-  // }, [data]);
-
-  // const energySortedData = useMemo(() => {
-  //   if (!data) return null;
-  //   return data.sort((a, b) => a.energy - b.energy);
-  // }, [data]);
-
   return (
     <Box spaceY="md" width="twoThirds">
-      <Box css={{ height: '32px' }} full flex="row" justify="between">
-        <Box>Filter</Box>
-        <Box flex="row" gap="sm">
-          <Text size="small" fontWeight="700">{`${data.length} Tracks`}</Text>
-          <Text size="small" fontWeight="700">
-            {convertMsToMinutesAndSeconds(
-              data.reduce((acc, curr) => acc + curr.duration_ms, 0)
-            )}
-          </Text>
-        </Box>
+      <Box
+        css={{ height: '32px' }}
+        full
+        flex="row"
+        align="center"
+        justify="between"
+      >
+        <TracklistSort value={value} setValue={setValue} />
+        <TracklistMetrics />
       </Box>
       {data.map((track) => (
         <Flex gap="md" key={track.id}>
@@ -143,74 +143,3 @@ export default Tracklist;
 interface StatusProps {
   status: 'Loading' | 'Error';
 }
-
-const PlaceHolder = ({ status }: StatusProps) => {
-  return (
-    <Box spaceY="md" padding="md" width="twoThirds">
-      {new Array(10).fill(0).map((_, i) => (
-        <Flex key={i} gap="md">
-          <Box
-            css={{ width: '64px', height: '64px', backgroundColor: '$base' }}
-            radius="md"
-          ></Box>
-
-          <Box
-            css={{ width: '50%' }}
-            flex="column"
-            justify="center"
-            spaceY="xs"
-          >
-            <a>
-              <Text css={{ cursor: 'pointer' }} hover="fade" as="h6" size="h6">
-                {status}
-              </Text>
-            </a>
-            <Flex align="center" gap="sm">
-              <Flex
-                as="span"
-                justify="center"
-                align="center"
-                css={{
-                  width: '8px',
-                  height: '8px',
-                  borderRadius: '4px',
-                  backgroundColor: '$gray9',
-                  fontSize: '10px',
-                  padding: '10px',
-                  color: '$gray1',
-                }}
-              >
-                L
-              </Flex>
-              <Text
-                hover="dark"
-                css={{
-                  cursor: 'pointer',
-                  transition: 'color 0.3s ease-in-out',
-                  '&:hover': {
-                    color: '$gray12',
-                  },
-                }}
-                color="faded"
-                as="p"
-                size="p"
-              >
-                {status}
-              </Text>
-            </Flex>
-          </Box>
-          <Box width="quarter" flex="column" justify="center">
-            <Text color="faded" as="small" size="small">
-              {status}
-            </Text>
-          </Box>
-          <Box flex="column" align="end" justify="center" css={{ flex: 1 }}>
-            <IconButton disabled variant="black">
-              <IconPlayerPlay color="#00000080" size={20} />
-            </IconButton>
-          </Box>
-        </Flex>
-      ))}
-    </Box>
-  );
-};

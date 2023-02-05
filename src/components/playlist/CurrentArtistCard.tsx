@@ -71,7 +71,7 @@ const PlaceHolder = ({ status }: StatusProps) => {
     <Container as="section" mt="xl" size="lg">
       <Box flex="row" gap="sm">
         <Box
-          css={{ height: '120px', width: '120px', backgroundColor: '$base' }}
+          css={{ height: '120px', width: '120px', backgroundColor: '$gray7' }}
           radius="md"
           flex="row"
         ></Box>

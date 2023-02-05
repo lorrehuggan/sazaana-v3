@@ -21,7 +21,7 @@ const globalStyles = globalCss({
     fontSmooth: 'always',
   },
   body: {
-    backgroundColor: '#F4F5EC',
+    backgroundColor: '$gray1',
   },
   a: {
     textDecoration: 'none',
