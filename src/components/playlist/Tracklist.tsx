@@ -5,15 +5,16 @@ import { Flex } from '@components/ui/Flex';
 import { Text } from '@components/ui/Text';
 import { useCurrentArtistStore } from '@state/currentArtist';
 import { api } from '@utils/api';
-import { truncateString } from '@utils/index';
+import { convertMsToMinutesAndSeconds, truncateString } from '@utils/index';
 import Link from 'next/link';
 import { IconButton } from '@components/ui/IconButton';
 import AudioPlayer from './AudioPlayer';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useAudioPlayingState } from '@state/audioPlaying';
 
 const Tracklist = () => {
   const id = useCurrentArtistStore((state) => state.id);
+  const { id: trackPlayingId } = useAudioPlayingState((state) => state);
   const { data, isLoading, error } = api.artistRouter.getPlaylist.useQuery(
     { id },
     {
@@ -25,8 +26,34 @@ const Tracklist = () => {
 
   if (error) return <PlaceHolder status="Error" />;
 
+  // const tempoSortedData = useMemo(() => {
+  //   if (!data) return null;
+  //   return data.sort((a, b) => a.tempo - b.tempo);
+  // }, [data]);
+
+  // const danceabilitySortedData = useMemo(() => {
+  //   if (!data) return null;
+  //   return data.sort((a, b) => a.danceability - b.danceability);
+  // }, [data]);
+
+  // const energySortedData = useMemo(() => {
+  //   if (!data) return null;
+  //   return data.sort((a, b) => a.energy - b.energy);
+  // }, [data]);
+
   return (
     <Box spaceY="md" width="twoThirds">
+      <Box css={{ height: '32px' }} full flex="row" justify="between">
+        <Box>Filter</Box>
+        <Box flex="row" gap="sm">
+          <Text size="small" fontWeight="700">{`${data.length} Tracks`}</Text>
+          <Text size="small" fontWeight="700">
+            {convertMsToMinutesAndSeconds(
+              data.reduce((acc, curr) => acc + curr.duration_ms, 0)
+            )}
+          </Text>
+        </Box>
+      </Box>
       {data.map((track) => (
         <Flex gap="md" key={track.id}>
           <Image
@@ -46,7 +73,15 @@ const Tracklist = () => {
             spaceY="xs"
           >
             <a>
-              <Text css={{ cursor: 'pointer' }} hover="fade" as="h6" size="h6">
+              <Text
+                css={{
+                  cursor: 'pointer',
+                  color: trackPlayingId === track.preview_url ? '$primary' : '',
+                }}
+                hover="fade"
+                as="h6"
+                size="h6"
+              >
                 {truncateString(track.name?.split('(')[0]!, 26)}
               </Text>
             </a>

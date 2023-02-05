@@ -30,6 +30,7 @@ const CurrentArtistCard = () => {
               style={{
                 objectFit: 'cover',
                 borderRadius: '4px',
+                boxShadow: '1px 2px 5px 1px rgba(0,0,0,0.2)',
               }}
               width={120}
               height={120}

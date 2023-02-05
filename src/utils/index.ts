@@ -32,3 +32,9 @@ export function truncateString(str: string | undefined, num: number) {
   }
   return str.slice(0, num) + '...';
 }
+
+export function convertMsToMinutesAndSeconds(ms: number) {
+  const minutes = Math.floor(ms / 60000);
+  const seconds = Number(((ms % 60000) / 1000).toFixed(0));
+  return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+}
