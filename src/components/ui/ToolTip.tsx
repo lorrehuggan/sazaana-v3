@@ -5,7 +5,7 @@ import { Text } from './Text';
 
 interface Props {
   children: ReactNode;
-  message: string;
+  message: ReactNode | string;
 }
 
 const ToolTipButton = ({ children, message }: Props) => {

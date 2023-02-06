@@ -74,7 +74,7 @@ const AudioPlayer = ({ audio, tempo }: AudioPlayerProps) => {
         <IconButton onClick={() => playAudio(audio)} variant="black">
           <IconCircleDashed
             style={{
-              animation: audioPlayingAnimation(tempo / 100),
+              animation: audioPlayingAnimation(tempo / 50),
             }}
             color="#00000080"
             size={20}
