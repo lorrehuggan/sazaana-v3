@@ -14,13 +14,13 @@ const PlaylistBody = () => {
       refetchOnWindowFocus: false,
     }
   );
-  const { setData, setIsLoading, setError } = useCurrentPlaylistStore(
-    (state) => state
-  );
+  const { setData, setShadowData, setIsLoading, setError } =
+    useCurrentPlaylistStore((state) => state);
 
   useEffect(() => {
     if (data) {
       setData(data);
+      setShadowData(data);
     }
   }, [data]);
 
@@ -33,7 +33,7 @@ const PlaylistBody = () => {
   }, [error]);
 
   return (
-    <Container flex="row" gap="xl" mt="xl" as="section" size="lg">
+    <Container flex="row" gap="xl" mt="xl" as="section" pb="2xl" size="lg">
       <Menu />
       <Tracklist />
     </Container>

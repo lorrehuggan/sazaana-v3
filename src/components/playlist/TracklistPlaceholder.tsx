@@ -11,7 +11,7 @@ interface Props {
 const TrackListPlaceHolder = ({ status }: Props) => {
   return (
     <Box spaceY="md" padding="md" width="twoThirds">
-      {new Array(10).fill(0).map((_, i) => (
+      {new Array(1).fill(0).map((_, i) => (
         <Flex key={i} gap="md">
           <Box
             css={{ width: '64px', height: '64px', backgroundColor: '$gray6' }}
