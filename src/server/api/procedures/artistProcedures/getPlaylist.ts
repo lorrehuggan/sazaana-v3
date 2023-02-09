@@ -48,10 +48,12 @@ export const getPlaylist = publicProcedure
         })
       );
 
-      let data = audioFeatures.map((feature, index) => {
+      const data = audioFeatures.map((feature, index) => {
+        const track = relatedArtistsTopTracks[index];
+        if (!track) throw new Error('No track found');
         return {
-          ...relatedArtistsTopTracks[index],
-          ...feature,
+          features: feature,
+          track: track,
         };
       });
 

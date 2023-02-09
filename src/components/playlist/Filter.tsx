@@ -7,7 +7,7 @@ const FilterTracks = () => {
   const [value, setValue] = useState('50');
 
   return (
-    <Box spaceY="lg" flex="column" full css={{ height: '30rem' }}>
+    <Box spaceY="lg" flex="column" full css={{ height: 'auto' }}>
       <Text as="h6" size="h6">
         Filter
       </Text>

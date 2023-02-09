@@ -1,44 +1,40 @@
-import { Box } from '@components/ui/Box';
-import { Button } from '@components/ui/Button';
 import { Container } from '@components/ui/Container';
-import { Text } from '@components/ui/Text';
-import { IconBrandSpotify } from '@tabler/icons-react';
-import FilterTracks from './Filter';
+import { useEffect } from 'react';
+import { useCurrentArtistStore } from '@state/currentArtist';
+import { useCurrentPlaylistStore } from '@state/currentPlaylist';
+import { api } from '@utils/api';
+import Menu from './Menu';
 import Tracklist from './Tracklist';
 
 const PlaylistBody = () => {
+  const id = useCurrentArtistStore((state) => state.id);
+  const { data, isLoading, error } = api.artistRouter.getPlaylist.useQuery(
+    { id },
+    {
+      refetchOnWindowFocus: false,
+    }
+  );
+  const { setData, setIsLoading, setError } = useCurrentPlaylistStore(
+    (state) => state
+  );
+
+  useEffect(() => {
+    if (data) {
+      setData(data);
+    }
+  }, [data]);
+
+  useEffect(() => {
+    setIsLoading(isLoading);
+  }, [isLoading]);
+
+  useEffect(() => {
+    setError(error);
+  }, [error]);
+
   return (
     <Container flex="row" gap="xl" mt="xl" as="section" size="lg">
-      <Box spaceY="lg" css={{ flex: 1 }}>
-        <Box spaceY="md" radius="sm">
-          <Text as="h6" size="h6">
-            Keep This Playlist
-          </Text>
-          <Text color="faded">
-            Sign in with Spotify and save your songs to a playlist
-          </Text>
-          <Button
-            css={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '$xs',
-            }}
-            size="md"
-            width="full"
-            variant="black"
-          >
-            <IconBrandSpotify
-              size={24}
-              style={{
-                color: '#17D860',
-              }}
-            />
-            Sign In To Save
-          </Button>
-        </Box>
-        <FilterTracks />
-      </Box>
+      <Menu />
       <Tracklist />
     </Container>
   );

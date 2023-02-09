@@ -1,39 +1,18 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import {
-  IconActivity,
-  IconBounceRight,
-  IconPlayerPlay,
-  IconSpeedboat,
-} from '@tabler/icons-react';
 import { Box } from '@components/ui/Box';
 import { Flex } from '@components/ui/Flex';
 import { Text } from '@components/ui/Text';
-import { useCurrentArtistStore } from '@state/currentArtist';
-import { api } from '@utils/api';
-import { convertMsToMinutesAndSeconds, truncateString } from '@utils/index';
-import { IconButton } from '@components/ui/IconButton';
+import { truncateString } from '@utils/index';
 import AudioPlayer from './AudioPlayer';
 import { useAudioPlayingState } from '@state/audioPlaying';
-import { ToggleGroupItem, ToggleGroupRoot } from '@components/ui/ToggleGroup';
-import { useEffect, useState } from 'react';
-import ToolTipButton from '@components/ui/ToolTip';
-import TracklistSort from './TracklistSort';
 import TracklistMetrics from './TracklistMetrics';
 import TrackListPlaceHolder from './TracklistPlaceholder';
 import { useCurrentPlaylistStore } from '@state/currentPlaylist';
 
 const Tracklist = () => {
-  const [value, setValue] = useState('');
-  const id = useCurrentArtistStore((state) => state.id);
   const { id: trackPlayingId } = useAudioPlayingState((state) => state);
-  const setCurrentTrackList = useCurrentPlaylistStore((state) => state.setData);
-  const { data, isLoading, error } = api.artistRouter.getPlaylist.useQuery(
-    { id },
-    {
-      refetchOnWindowFocus: false,
-    }
-  );
+  const { data, isLoading, error } = useCurrentPlaylistStore((state) => state);
 
   if (isLoading) return <TrackListPlaceHolder status="Loading" />;
 
@@ -52,7 +31,7 @@ const Tracklist = () => {
         <div></div>
         <TracklistMetrics />
       </Box>
-      {data.map((track) => (
+      {data.map(({ track, features }) => (
         <Flex gap="md" key={track.id}>
           <Image
             style={{
@@ -129,7 +108,7 @@ const Tracklist = () => {
               {truncateString(track?.album?.name, 20)}
             </Text>
           </Box>
-          <AudioPlayer audio={track.preview_url} tempo={track.tempo} />
+          <AudioPlayer audio={track.preview_url} tempo={features.tempo} />
         </Flex>
       ))}
     </Box>

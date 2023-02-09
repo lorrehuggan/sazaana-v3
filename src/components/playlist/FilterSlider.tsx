@@ -18,7 +18,7 @@ interface Props {
 const FilterSlider = ({ category, start, end, low, high }: Props) => {
   return (
     <Box spaceY="md">
-      <Text textAlign="right" as="p" size="small">
+      <Text textAlign="center" as="p" size="p">
         {category}
       </Text>
       <SliderRoot defaultValue={[start, end]} minStepsBetweenThumbs={1}>
