@@ -72,6 +72,7 @@ export const {
     py: (value: string) => ({ paddingTop: value, paddingBottom: value }),
     h: (value: string) => ({ height: value }),
     w: (value: string) => ({ width: value }),
+    bg: (value: string) => ({ backgroundColor: value }),
     size: (value: string) => ({ width: value, height: value }),
     text: (value: string) => ({ fontSize: value, fontWeight: '400' }),
     textBold: (value: string) => ({ fontSize: value, fontWeight: '700' }),

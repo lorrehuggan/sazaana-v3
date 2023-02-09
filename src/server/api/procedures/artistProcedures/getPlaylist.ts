@@ -37,7 +37,7 @@ export const getPlaylist = publicProcedure
         .sort((a, b) => a.sort - b.sort)
         .map((a) => a.value);
 
-      relatedArtistsTopTracks = relatedArtistsTopTracks.slice(0, 10);
+      relatedArtistsTopTracks = relatedArtistsTopTracks.slice(0, 3);
 
       const audioFeatures = await Promise.all(
         relatedArtistsTopTracks.map(async (track) => {

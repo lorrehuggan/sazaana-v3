@@ -16,16 +16,18 @@ import { IconButton } from '@components/ui/IconButton';
 import AudioPlayer from './AudioPlayer';
 import { useAudioPlayingState } from '@state/audioPlaying';
 import { ToggleGroupItem, ToggleGroupRoot } from '@components/ui/ToggleGroup';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ToolTipButton from '@components/ui/ToolTip';
 import TracklistSort from './TracklistSort';
 import TracklistMetrics from './TracklistMetrics';
 import TrackListPlaceHolder from './TracklistPlaceholder';
+import { useCurrentPlaylistStore } from '@state/currentPlaylist';
 
 const Tracklist = () => {
   const [value, setValue] = useState('');
   const id = useCurrentArtistStore((state) => state.id);
   const { id: trackPlayingId } = useAudioPlayingState((state) => state);
+  const setCurrentTrackList = useCurrentPlaylistStore((state) => state.setData);
   const { data, isLoading, error } = api.artistRouter.getPlaylist.useQuery(
     { id },
     {
@@ -37,11 +39,6 @@ const Tracklist = () => {
 
   if (error) return <TrackListPlaceHolder status="Error" />;
 
-  // const tempoSortedData = useMemo(() => {
-  //   if (!data) return null;
-  //   return data.sort((a, b) => a.tempo - b.tempo);
-  // }, [data]);
-
   return (
     <Box spaceY="md" width="twoThirds">
       <Box
@@ -51,7 +48,8 @@ const Tracklist = () => {
         align="center"
         justify="between"
       >
-        <TracklistSort value={value} setValue={setValue} />
+        {/* <TracklistSort value={value} setValue={setValue} /> */}
+        <div></div>
         <TracklistMetrics />
       </Box>
       {data.map((track) => (
@@ -72,7 +70,7 @@ const Tracklist = () => {
             justify="center"
             spaceY="xs"
           >
-            <a>
+            <a href={track.external_urls?.spotify}>
               <Text
                 css={{
                   cursor: 'pointer',
@@ -120,7 +118,7 @@ const Tracklist = () => {
                       as="p"
                       size="p"
                     >
-                      {artist.name}
+                      {truncateString(artist.name, 20)}
                     </Text>
                   </Link>
                 ))}

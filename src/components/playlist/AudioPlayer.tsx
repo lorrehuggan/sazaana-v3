@@ -3,7 +3,7 @@ import { Box } from '@components/ui/Box';
 import { IconButton } from '@components/ui/IconButton';
 import { IconCircleDashed, IconPlayerPlay } from '@tabler/icons-react';
 import { useEffect, useRef, useState } from 'react';
-import { audioPlayingAnimation } from '@utils/keyframes';
+import { audioPlayingAnimation, playbackAnimation } from '@utils/keyframes';
 import { useAudioPlayingState } from '@state/audioPlaying';
 import * as Tooltip from '@radix-ui/react-tooltip';
 
@@ -71,7 +71,25 @@ const AudioPlayer = ({ audio, tempo }: AudioPlayerProps) => {
   return (
     <Box flex="row" align="center" justify="end" css={{ flex: 1 }}>
       {state && id === audio ? (
-        <IconButton onClick={() => playAudio(audio)} variant="black">
+        <IconButton
+          css={{
+            position: 'relative',
+            '&::after': {
+              content: '""',
+              position: 'absolute',
+              bottom: '-8px',
+              left: 0,
+              height: '3px',
+              width: '0%',
+              bg: '$gray10',
+              borderRadius: '3px',
+              zIndex: -1,
+              animation: playbackAnimation(30),
+            },
+          }}
+          onClick={() => playAudio(audio)}
+          variant="black"
+        >
           <IconCircleDashed
             style={{
               animation: audioPlayingAnimation(tempo / 50),

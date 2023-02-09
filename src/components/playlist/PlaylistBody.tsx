@@ -3,11 +3,12 @@ import { Button } from '@components/ui/Button';
 import { Container } from '@components/ui/Container';
 import { Text } from '@components/ui/Text';
 import { IconBrandSpotify } from '@tabler/icons-react';
+import FilterTracks from './Filter';
 import Tracklist from './Tracklist';
 
 const PlaylistBody = () => {
   return (
-    <Container flex="row" gap="lg" mt="xl" as="section" size="lg">
+    <Container flex="row" gap="xl" mt="xl" as="section" size="lg">
       <Box spaceY="lg" css={{ flex: 1 }}>
         <Box spaceY="md" radius="sm">
           <Text as="h6" size="h6">
@@ -36,11 +37,7 @@ const PlaylistBody = () => {
             Sign In To Save
           </Button>
         </Box>
-        <Box full padding="md" css={{ height: '30rem' }}>
-          <Text as="p" size="p">
-            Filter Songs
-          </Text>
-        </Box>
+        <FilterTracks />
       </Box>
       <Tracklist />
     </Container>
