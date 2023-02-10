@@ -33,10 +33,12 @@ const PlaylistBody = () => {
   }, [error]);
 
   return (
-    <Container flex="row" gap="xl" mt="xl" as="section" pb="2xl" size="lg">
-      <Menu />
-      <Tracklist />
-    </Container>
+    <>
+      <Container flex="row" gap="xl" mt="xl" as="section" pb="2xl" size="lg">
+        <Menu />
+        <Tracklist />
+      </Container>
+    </>
   );
 };
 

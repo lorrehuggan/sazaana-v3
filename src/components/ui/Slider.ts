@@ -22,7 +22,7 @@ export const SliderTrack = styled(Slider.Track, {
 
 export const SliderRange = styled(Slider.Range, {
   position: 'absolute',
-  backgroundColor: '$cyan6',
+  backgroundColor: '$gray8',
   borderRadius: '9999px',
   height: '100%',
 });
@@ -30,13 +30,14 @@ export const SliderRange = styled(Slider.Range, {
 export const SliderThumb = styled(Slider.Thumb, {
   display: 'block',
   cursor: 'grab',
-  width: 20,
-  height: 20,
+  width: 15,
+  height: 15,
   border: '1px solid $gray10',
   backgroundColor: '$gray7',
   boxShadow: `4px 2px 1px $gray12`,
   borderRadius: 10,
-  opacity: 0.4,
+  opacity: 0.8,
+  transition: 'all 200ms ease-out',
   '&:hover': {
     backgroundColor: '$cyan5',
     opacity: 1,

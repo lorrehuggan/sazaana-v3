@@ -30,8 +30,8 @@ const filterData = [
   },
   {
     label: 'mood',
-    low: 'single on a rainy day',
-    high: 'dancing with your crush',
+    low: 'rainy day',
+    high: 'dancing in the rain',
     step: 0.1,
     min: 0,
     max: 1,

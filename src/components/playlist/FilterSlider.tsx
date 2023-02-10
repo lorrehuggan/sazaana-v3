@@ -52,7 +52,7 @@ const FilterSlider = ({ label, low, high, step, min, max }: Props) => {
       acousticness[0]! > 0 ||
       acousticness[1]! < 1
     ) {
-      let f = shadowData.filter((track) => {
+      let filtered = shadowData.filter((track) => {
         return (
           track.track.popularity >= popularity[0]! &&
           track.track.popularity <= popularity[1]! &&
@@ -68,7 +68,7 @@ const FilterSlider = ({ label, low, high, step, min, max }: Props) => {
           track.features.acousticness <= acousticness[1]!
         );
       });
-      setData(f);
+      setData(filtered);
     }
   }, [
     popularity,

@@ -8,7 +8,6 @@ import CurrentArtistCard from '@components/playlist/CurrentArtistCard';
 import PlaylistBody from '@components/playlist/PlaylistBody';
 import { useCurrentArtistStore } from '@state/currentArtist';
 import { useEffect } from 'react';
-import { useCurrentPlaylistStore } from '@state/currentPlaylist';
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { id } = ctx.query;
