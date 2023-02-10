@@ -111,7 +111,7 @@ const FilterSlider = ({ label, low, high, step, min, max }: Props) => {
   }
   return (
     <Box spaceY="sm">
-      <Text capitalize textAlign="center" as="p" size="p">
+      <Text capitalize as="p" size="p">
         {label}
       </Text>
       <SliderRoot
@@ -126,17 +126,17 @@ const FilterSlider = ({ label, low, high, step, min, max }: Props) => {
         min={min}
         max={max}
       >
-        <SliderTrack>
-          <SliderRange />
+        <SliderTrack id="track">
+          <SliderRange id="track" />
         </SliderTrack>
         <SliderThumb />
         <SliderThumb />
       </SliderRoot>
       <Box flex="row" justify="between">
-        <Text as="small" size="small">
+        <Text uppercase as="small" size="small">
           {low}
         </Text>
-        <Text as="small" size="small">
+        <Text uppercase as="small" size="small">
           {high}
         </Text>
       </Box>

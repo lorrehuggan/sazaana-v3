@@ -9,6 +9,7 @@ export const SliderRoot = styled(Slider.Root, {
   touchAction: 'none',
   width: '100%',
   height: 20,
+  childrenHoverOpacity: '1',
 });
 
 export const SliderTrack = styled(Slider.Track, {
@@ -21,23 +22,29 @@ export const SliderTrack = styled(Slider.Track, {
 
 export const SliderRange = styled(Slider.Range, {
   position: 'absolute',
-  backgroundColor: '$primary',
+  backgroundColor: '$cyan6',
   borderRadius: '9999px',
   height: '100%',
 });
 
 export const SliderThumb = styled(Slider.Thumb, {
   display: 'block',
+  cursor: 'grab',
   width: 20,
   height: 20,
   border: '1px solid $gray10',
-  backgroundColor: '$gray4',
-  boxShadow: `0 2px 10px $gray7`,
+  backgroundColor: '$gray7',
+  boxShadow: `4px 2px 1px $gray12`,
   borderRadius: 10,
-  '&:hover': { backgroundColor: '$cyan5' },
+  opacity: 0.4,
+  '&:hover': {
+    backgroundColor: '$cyan5',
+    opacity: 1,
+  },
   '&:focus': {
     outline: 'none',
-    boxShadow: `0 0 0 5px $gray8`,
+    boxShadow: `1px 1px 0 5px $gray8`,
     backgroundColor: '$cyan7',
+    cursor: 'grabbing',
   },
 });
