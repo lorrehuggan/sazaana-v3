@@ -6,13 +6,12 @@ import { Text } from '@components/ui/Text';
 import { truncateString } from '@utils/index';
 import AudioPlayer from './AudioPlayer';
 import { useAudioPlayingState } from '@state/audioPlaying';
-import TracklistMetrics from './TracklistMetrics';
 import TrackListPlaceHolder from './TracklistPlaceholder';
 import { useCurrentPlaylistStore } from '@state/currentPlaylist';
 import { AnimatePresence, motion } from 'framer-motion';
 import TrackArtist from './TrackArtist';
-import { Button } from '@components/ui/Button';
 import { api } from '@utils/api';
+import TracklistMenu from './TracklistMenu';
 
 const Tracklist = () => {
   const { id: trackPlayingId } = useAudioPlayingState((state) => state);
@@ -45,16 +44,7 @@ const Tracklist = () => {
 
   return (
     <Box spaceY="md" width="twoThirds">
-      <Box
-        css={{ height: '32px' }}
-        full
-        flex="row"
-        align="center"
-        justify="end"
-      >
-        <TracklistMetrics />
-      </Box>
-
+      <TracklistMenu />
       <Box css={{ pr: '12px' }} as={motion.ul} spaceY="md" layout>
         <AnimatePresence initial={false}>
           {data.map(({ track, features }) => (
