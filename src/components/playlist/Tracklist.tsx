@@ -50,11 +50,8 @@ const Tracklist = () => {
         full
         flex="row"
         align="center"
-        justify="between"
+        justify="end"
       >
-        <Button onClick={handleCreatePlaylist} variant="black">
-          Save
-        </Button>
         <TracklistMetrics />
       </Box>
 
