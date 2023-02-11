@@ -19,6 +19,7 @@ import { spinAnimation } from '@utils/keyframes';
 import { Box } from '@components/ui/Box';
 import SearchResults from './SearchResults';
 import { useState } from 'react';
+import { useCurrentPlaylistStore } from '@state/currentPlaylist';
 
 type SearchType = z.infer<typeof SearchSchema>;
 
@@ -67,6 +68,7 @@ const Search = () => {
               autoComplete="off"
               css={{
                 h: '100%',
+                fontSize: '$md',
               }}
             />
             <SubmitButton isLoading={isLoading} />
@@ -111,9 +113,10 @@ interface SubmitButtonProps {
 }
 
 function SubmitButton({ isLoading }: SubmitButtonProps) {
+  const playlistLoading = useCurrentPlaylistStore((state) => state.isLoading);
   return (
     <>
-      {isLoading ? (
+      {isLoading || playlistLoading ? (
         <IconButton size="sm" type="button" disabled>
           <IconReload
             style={{

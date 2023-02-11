@@ -9,7 +9,8 @@ import { useAudioPlayingState } from '@state/audioPlaying';
 import TracklistMetrics from './TracklistMetrics';
 import TrackListPlaceHolder from './TracklistPlaceholder';
 import { useCurrentPlaylistStore } from '@state/currentPlaylist';
-import { AnimatePresence, motion, Reorder } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+import TrackArtist from './TrackArtist';
 
 const Tracklist = () => {
   const { id: trackPlayingId } = useAudioPlayingState((state) => state);
@@ -30,11 +31,11 @@ const Tracklist = () => {
         align="center"
         justify="between"
       >
-        {/* <TracklistSort value={value} setValue={setValue} /> */}
         <div></div>
         <TracklistMetrics />
       </Box>
-      <Box as={motion.ul} spaceY="md" layout>
+
+      <Box css={{ pr: '12px' }} as={motion.ul} spaceY="md" layout>
         <AnimatePresence initial={false}>
           {data.map(({ track, features }) => (
             <Box
@@ -97,25 +98,11 @@ const Tracklist = () => {
                     </Flex>
                   )}
                   {track.artists &&
-                    track.artists.slice(0, 2).map((artist) => (
-                      <Link href={`/playlist/${artist.id}`} key={artist.id}>
-                        <Text
-                          hover="dark"
-                          css={{
-                            cursor: 'pointer',
-                            transition: 'color 0.3s ease-in-out',
-                            '&:hover': {
-                              color: '$gray12',
-                            },
-                          }}
-                          color="faded"
-                          as="p"
-                          size="p"
-                        >
-                          {truncateString(artist.name, 20)}
-                        </Text>
-                      </Link>
-                    ))}
+                    track.artists
+                      .slice(0, 2)
+                      .map((artist) => (
+                        <TrackArtist name={artist.name} id={artist.id} />
+                      ))}
                 </Flex>
               </Box>
               <Box width="quarter" flex="column" justify="center">

@@ -2,7 +2,7 @@ import { Box } from '@components/ui/Box';
 import { Text } from '@components/ui/Text';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Dispatch, FC, SetStateAction } from 'react';
+import { Dispatch, FC, SetStateAction, useEffect, useRef } from 'react';
 
 interface Props {
   items: SpotifyApi.ArtistObjectFull[];
@@ -10,8 +10,24 @@ interface Props {
 }
 
 const SearchResults: FC<Props> = ({ items, setResultsOpen }) => {
+  const ref = useRef<HTMLLIElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        setResultsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [ref, setResultsOpen]);
+
   return (
     <Box
+      as="ul"
+      onBlur={() => setResultsOpen(false)}
       css={{
         maxHeight: '12.75rem',
         sy: '$sm',
@@ -23,7 +39,7 @@ const SearchResults: FC<Props> = ({ items, setResultsOpen }) => {
       mt="md"
     >
       {items.map((item, i) => (
-        <div onClick={() => setResultsOpen(false)} key={i}>
+        <Box as="li" onClick={() => setResultsOpen(false)} key={i}>
           <Link href={`/playlist/${item.id}`}>
             <Box
               css={{
@@ -62,7 +78,7 @@ const SearchResults: FC<Props> = ({ items, setResultsOpen }) => {
               <Text css={{ fontWeight: 'bold' }}>{item.name}</Text>
             </Box>
           </Link>
-        </div>
+        </Box>
       ))}
     </Box>
   );

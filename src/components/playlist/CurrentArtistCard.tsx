@@ -41,7 +41,7 @@ const CurrentArtistCard = () => {
           <Box css={{ minHeight: '120px' }} justify="between" flex="column">
             <Box css={{ sy: '$sm' }}>
               <Text size="h4">{data?.name}</Text>
-              <Text fontWeight="400" color="faded" size="h6">
+              <Text fontWeight="400" size="h6">
                 {data && intToString(data?.followers.total)} Followers
               </Text>
               <Text color="faded">{`${data.popularity}% Popularity`}</Text>
