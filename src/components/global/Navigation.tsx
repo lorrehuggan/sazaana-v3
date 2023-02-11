@@ -5,8 +5,12 @@ import { styled, theme } from '../../../stitches.config';
 import { IconMenu } from '@tabler/icons-react';
 import { Box } from '@components/ui/Box';
 import Link from 'next/link';
+import { Button } from '@components/ui/Button';
+import { signOut, useSession } from 'next-auth/react';
+import Image from 'next/image';
 
 const Navigation = () => {
+  const { data: session } = useSession();
   return (
     <Nav>
       <Container
@@ -22,33 +26,29 @@ const Navigation = () => {
             sazaana
           </Text>
           <Box>
-            <ul style={{ display: 'flex', gap: '8px' }}>
+            <ul style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
               <li>
-                <Link href="/discover">
-                  <Text
-                    uppercase
-                    size="small"
-                    fontWeight="700"
-                    css={{ cursor: 'pointer' }}
-                    hover="fade"
-                  >
-                    Discover
-                  </Text>
-                </Link>
+                {session ? (
+                  <Button onClick={() => signOut()} variant="black">
+                    Sign Out
+                  </Button>
+                ) : (
+                  <Link href="/login">
+                    <Button variant="black">Sign In</Button>
+                  </Link>
+                )}
               </li>
-              <li>
-                <Link href="/discover">
-                  <Text
-                    uppercase
-                    size="small"
-                    fontWeight="700"
-                    css={{ cursor: 'pointer' }}
-                    hover="fade"
-                  >
-                    Sign In
-                  </Text>
-                </Link>
-              </li>
+              {session?.user?.image && (
+                <li>
+                  <Image
+                    style={{ borderRadius: '4px', objectFit: 'cover' }}
+                    width={32}
+                    height={32}
+                    src={session.user.image}
+                    alt={session.user.email ?? 'User Avatar'}
+                  />
+                </li>
+              )}
             </ul>
           </Box>
         </Box>

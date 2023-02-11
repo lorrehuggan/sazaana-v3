@@ -1,11 +1,34 @@
+import { Box } from '@components/ui/Box';
+import { Button } from '@components/ui/Button';
+import { Text } from '@components/ui/Text';
 import { GetServerSideProps } from 'next';
-import { getProviders } from 'next-auth/react';
+import { ClientSafeProvider, getProviders, signIn } from 'next-auth/react';
 
-const Login = () => {
+interface Props {
+  provider: ClientSafeProvider;
+}
+
+const Login = ({ provider }: Props) => {
   return (
-    <div>
-      <h1>Login</h1>
-    </div>
+    <Box
+      flex="column"
+      justify="center"
+      align="center"
+      css={{
+        height: '100vh',
+      }}
+    >
+      <Button
+        onClick={() =>
+          signIn(provider.id, {
+            callbackUrl: '/',
+          })
+        }
+        size="md"
+      >
+        Login With Spotify
+      </Button>
+    </Box>
   );
 };
 
@@ -15,9 +38,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req, res } = context;
   const providers = await getProviders();
 
+  if (!providers?.spotify) {
+    throw new Error('No Spotify provider found');
+  }
+
   return {
     props: {
-      providers,
+      provider: providers.spotify,
     },
   };
 };

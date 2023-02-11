@@ -14,6 +14,7 @@ const CurrentArtistCard = () => {
     },
     {
       refetchOnWindowFocus: false,
+      enabled: !!id,
     }
   );
 

@@ -11,6 +11,8 @@ import TrackListPlaceHolder from './TracklistPlaceholder';
 import { useCurrentPlaylistStore } from '@state/currentPlaylist';
 import { AnimatePresence, motion } from 'framer-motion';
 import TrackArtist from './TrackArtist';
+import { Button } from '@components/ui/Button';
+import { api } from '@utils/api';
 
 const Tracklist = () => {
   const { id: trackPlayingId } = useAudioPlayingState((state) => state);
@@ -18,9 +20,28 @@ const Tracklist = () => {
     (state) => state
   );
 
+  const createPlaylist = api.userRouter.createPlaylist.useMutation({
+    onSuccess: (data) => {
+      console.log('success');
+    },
+    onMutate: (s) => {
+      console.log('mutate');
+    },
+    onError: (e) => {
+      console.log('error');
+    },
+  });
+
   if (isLoading) return <TrackListPlaceHolder status="Loading" />;
 
   if (error) return <TrackListPlaceHolder status="Error" />;
+
+  function handleCreatePlaylist() {
+    createPlaylist.mutate({
+      name: 'test',
+      tracks: data.map((track) => track.track.uri),
+    });
+  }
 
   return (
     <Box spaceY="md" width="twoThirds">
@@ -31,7 +52,9 @@ const Tracklist = () => {
         align="center"
         justify="between"
       >
-        <div></div>
+        <Button onClick={handleCreatePlaylist} variant="black">
+          Save
+        </Button>
         <TracklistMetrics />
       </Box>
 

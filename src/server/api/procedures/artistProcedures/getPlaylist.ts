@@ -65,11 +65,11 @@ export const getPlaylist = publicProcedure
       //   .map((a) => a.value);
 
       return data;
-    } catch (error) {
+    } catch (error: any) {
       if (error instanceof ZodError) {
         throw new Error(error.message);
       }
       console.log(error);
-      throw new Error('Something went wrong');
+      throw new Error(error.message);
     }
   });

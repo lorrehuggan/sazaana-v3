@@ -12,6 +12,7 @@ const PlaylistBody = () => {
     { id },
     {
       refetchOnWindowFocus: false,
+      enabled: !!id,
     }
   );
   const { setData, setShadowData, setIsLoading, setError } =
