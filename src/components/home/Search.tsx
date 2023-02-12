@@ -17,7 +17,7 @@ import { api } from '@utils/api';
 import { spinAnimation } from '@utils/keyframes';
 import { Box } from '@components/ui/Box';
 import SearchResults from './SearchResults';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useCurrentPlaylistStore } from '@state/currentPlaylist';
 import ErrorMessage from '@components/global/ErrorMessage';
 
@@ -30,6 +30,7 @@ const Search = () => {
     handleSubmit,
     reset,
     formState: { errors },
+    getValues,
   } = useForm<SearchType>({
     resolver: zodResolver(SearchSchema),
   });
@@ -45,6 +46,10 @@ const Search = () => {
     // reset();
     mutate(data);
   }
+
+  useEffect(() => {
+    if (!getValues().artist) setResultsOpen(false);
+  }, [getValues().artist]);
 
   return (
     <>

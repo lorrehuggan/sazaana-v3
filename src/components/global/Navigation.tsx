@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { Button } from '@components/ui/Button';
 import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
+import Avatar from './Avatar';
 
 const Navigation = () => {
   const { data: session } = useSession();
@@ -38,14 +39,12 @@ const Navigation = () => {
                   </Link>
                 )}
               </li>
-              {session?.user?.image && (
+              {session?.user?.image && session.user.name && (
                 <li>
-                  <Image
-                    style={{ borderRadius: '4px', objectFit: 'cover' }}
-                    width={32}
-                    height={32}
+                  <Avatar
+                    name={session.user.name}
                     src={session.user.image}
-                    alt={session.user.email ?? 'User Avatar'}
+                    alt={session.user.name}
                   />
                 </li>
               )}
