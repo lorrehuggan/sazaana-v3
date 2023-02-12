@@ -1,11 +1,15 @@
 import { Howl, Howler } from 'howler';
 import { Box } from '@components/ui/Box';
 import { IconButton } from '@components/ui/IconButton';
-import { IconCircleDashed, IconPlayerPlay } from '@tabler/icons-react';
+import {
+  IconCircleDashed,
+  IconPlayerPlay,
+  IconPlayerStop,
+} from '@tabler/icons-react';
 import { useEffect, useRef, useState } from 'react';
 import { audioPlayingAnimation, playbackAnimation } from '@utils/keyframes';
 import { useAudioPlayingState } from '@state/audioPlaying';
-import * as Tooltip from '@radix-ui/react-tooltip';
+import { ProgressIndicator, ProgressRoot } from '@components/ui/Progress';
 
 interface AudioPlayerProps {
   audio: string | null | undefined;
@@ -69,7 +73,13 @@ const AudioPlayer = ({ audio, tempo }: AudioPlayerProps) => {
   if (!audio) return null;
 
   return (
-    <Box flex="row" align="center" justify="end" css={{ flex: 1 }}>
+    <Box
+      flex="column"
+      gap="md"
+      align="center"
+      justify="center"
+      css={{ flex: 1 }}
+    >
       {state && id === audio ? (
         <IconButton
           css={{
@@ -77,12 +87,12 @@ const AudioPlayer = ({ audio, tempo }: AudioPlayerProps) => {
             '&::after': {
               content: '""',
               position: 'absolute',
-              bottom: '-8px',
+              bottom: '-14px',
               left: 0,
-              height: '3px',
+              height: '8px',
               width: '0%',
               bg: '$gray10',
-              borderRadius: '3px',
+              borderRadius: '4px',
               zIndex: -1,
               animation: playbackAnimation(30),
             },
@@ -90,13 +100,7 @@ const AudioPlayer = ({ audio, tempo }: AudioPlayerProps) => {
           onClick={() => playAudio(audio)}
           variant="black"
         >
-          <IconCircleDashed
-            style={{
-              animation: audioPlayingAnimation(tempo / 50),
-            }}
-            color="#00000080"
-            size={20}
-          />
+          <IconPlayerStop color="#00000080" size={20} />
         </IconButton>
       ) : (
         <IconButton onClick={() => playAudio(audio)} variant="black">

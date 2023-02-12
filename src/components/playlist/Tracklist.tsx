@@ -31,6 +31,8 @@ const Tracklist = () => {
     },
   });
 
+  const playSong = api.userRouter.playAudio.useMutation({});
+
   if (isLoading) return <TrackListPlaceHolder status="Loading" />;
 
   if (error) return <TrackListPlaceHolder status="Error" />;
@@ -39,6 +41,12 @@ const Tracklist = () => {
     createPlaylist.mutate({
       name: 'test',
       tracks: data.map((track) => track.track.uri),
+    });
+  }
+
+  function handlePlaySong(uri: string) {
+    playSong.mutate({
+      uri: uri,
     });
   }
 
@@ -58,16 +66,18 @@ const Tracklist = () => {
               gap="md"
               key={track.id}
             >
-              <Image
-                style={{
-                  objectFit: 'cover',
-                  borderRadius: '4px',
-                }}
-                width={track.album?.images[2]?.width}
-                height={track.album?.images[2]?.height}
-                src={track.album?.images[2]?.url!}
-                alt={track.name!}
-              />
+              <Box>
+                <Image
+                  style={{
+                    objectFit: 'cover',
+                    borderRadius: '4px',
+                  }}
+                  width={track.album?.images[2]?.width}
+                  height={track.album?.images[2]?.height}
+                  src={track.album?.images[2]?.url!}
+                  alt={track.name!}
+                />
+              </Box>
               <Box
                 css={{ width: '50%' }}
                 flex="column"
@@ -111,7 +121,11 @@ const Tracklist = () => {
                     track.artists
                       .slice(0, 2)
                       .map((artist) => (
-                        <TrackArtist name={artist.name} id={artist.id} />
+                        <TrackArtist
+                          key={artist.id}
+                          name={artist.name}
+                          id={artist.id}
+                        />
                       ))}
                 </Flex>
               </Box>
