@@ -9,7 +9,6 @@ export const SliderRoot = styled(Slider.Root, {
   touchAction: 'none',
   width: '100%',
   height: 20,
-  childrenHoverOpacity: '1',
 });
 
 export const SliderTrack = styled(Slider.Track, {

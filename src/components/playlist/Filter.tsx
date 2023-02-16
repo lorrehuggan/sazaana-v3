@@ -62,7 +62,7 @@ const FilterTracks = () => {
       <Text as="h6" size="h6">
         Filter
       </Text>
-      {/* {filterData.map((filter) => (
+      {filterData.map((filter) => (
         <FilterSlider
           key={filter.label}
           step={filter.step}
@@ -72,7 +72,7 @@ const FilterTracks = () => {
           low={filter.low}
           high={filter.high}
         />
-      ))} */}
+      ))}
     </Box>
   );
 };

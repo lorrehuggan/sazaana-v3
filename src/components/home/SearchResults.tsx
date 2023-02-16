@@ -10,20 +10,6 @@ interface Props {
 }
 
 const SearchResults: FC<Props> = ({ items, setResultsOpen }) => {
-  const ref = useRef<HTMLLIElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (ref.current && !ref.current.contains(event.target as Node)) {
-        setResultsOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [ref, setResultsOpen]);
-
   return (
     <Box
       as="ul"

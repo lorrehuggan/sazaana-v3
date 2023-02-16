@@ -26,7 +26,7 @@ export const HoverCardContent = styled(HoverCard.Content, {
   padding: 20,
   width: 300,
   backgroundColor: 'white',
-  boxShadow: '1px 1px 3px 2px rgba(0, 0, 0, 0.4)',
+  boxShadow: '1px 1px 2px 1px rgba(0, 0, 0, 0.2)',
   animationDuration: '400ms',
   animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
   willChange: 'transform, opacity',
