@@ -15,6 +15,7 @@ export const Button = styled('button', {
   fontSize: '12px',
   fontWeight: '700',
   backgroundColor: 'transparent',
+  textTransform: 'uppercase',
   px: '$lg',
   py: '$md',
   variants: {
