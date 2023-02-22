@@ -8,7 +8,7 @@ import {
 import { Text } from '@components/ui/Text';
 import { useCurrentFeaturesStore } from '@state/currentFeatures';
 import { useCurrentPlaylistStore } from '@state/currentPlaylist';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 
 interface Props {
   label: string;
@@ -36,6 +36,7 @@ const FilterSlider = ({ label, low, high, step, min, max }: Props) => {
   } = useCurrentFeaturesStore((state) => state);
 
   const { setData, shadowData } = useCurrentPlaylistStore((state) => state);
+  const [sliderHovered, setSliderHovered] = useState(false);
 
   useMemo(() => {
     if (
@@ -115,6 +116,12 @@ const FilterSlider = ({ label, low, high, step, min, max }: Props) => {
         {label}
       </Text>
       <SliderRoot
+        onMouseEnter={() => {
+          setSliderHovered(true);
+        }}
+        onMouseLeave={() => {
+          setSliderHovered(false);
+        }}
         aria-label={label}
         defaultValue={[min, max]}
         minStepsBetweenThumbs={1}
@@ -126,11 +133,17 @@ const FilterSlider = ({ label, low, high, step, min, max }: Props) => {
         min={min}
         max={max}
       >
-        <SliderTrack id="track">
-          <SliderRange id="track" />
+        <SliderTrack>
+          <SliderRange />
         </SliderTrack>
-        <SliderThumb />
-        <SliderThumb />
+        <SliderThumb
+          css={{ opacity: sliderHovered ? 1 : 0 }}
+          id="slider-thumb"
+        />
+        <SliderThumb
+          css={{ opacity: sliderHovered ? 1 : 0 }}
+          id="slider-thumb"
+        />
       </SliderRoot>
       <Box flex="row" justify="between">
         <Text uppercase as="small" size="small">

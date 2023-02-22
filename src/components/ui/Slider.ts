@@ -32,11 +32,11 @@ export const SliderThumb = styled(Slider.Thumb, {
   width: 15,
   height: 15,
   border: '1px solid $gray10',
-  backgroundColor: '$gray7',
+  backgroundColor: '$primary',
   boxShadow: `4px 2px 1px $gray12`,
   borderRadius: 10,
   opacity: 0.8,
-  transition: 'all 200ms ease-out',
+  transition: 'all 300ms ease-out',
   '&:hover': {
     backgroundColor: '$cyan5',
     opacity: 1,
