@@ -10,8 +10,12 @@ const TracklistMetrics = () => {
 
   return (
     <Box flex="row" gap="sm">
-      <Text size="small" fontWeight="700">{`${data.length} Tracks`}</Text>
-      <Text size="small" fontWeight="700">
+      <Text
+        color="faded"
+        size="small"
+        fontWeight="700"
+      >{`${data.length} Tracks`}</Text>
+      <Text color="faded" size="small" fontWeight="700">
         {convertMsToMinutesAndSeconds(
           data.reduce((acc, curr) => acc + curr.track.duration_ms, 0)
         )}

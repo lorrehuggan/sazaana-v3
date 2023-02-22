@@ -1,5 +1,4 @@
 import { useForm } from 'react-hook-form';
-import { useDebouncedValue } from '@mantine/hooks';
 import z from 'zod';
 import { styled } from '../../../stitches.config';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -18,8 +17,9 @@ import { api } from '@utils/api';
 import { spinAnimation } from '@utils/keyframes';
 import { Box } from '@components/ui/Box';
 import SearchResults from './SearchResults';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useCurrentPlaylistStore } from '@state/currentPlaylist';
+import ErrorMessage from '@components/global/ErrorMessage';
 
 type SearchType = z.infer<typeof SearchSchema>;
 
@@ -30,6 +30,7 @@ const Search = () => {
     handleSubmit,
     reset,
     formState: { errors },
+    getValues,
   } = useForm<SearchType>({
     resolver: zodResolver(SearchSchema),
   });
@@ -45,6 +46,10 @@ const Search = () => {
     // reset();
     mutate(data);
   }
+
+  useEffect(() => {
+    if (!getValues().artist) setResultsOpen(false);
+  }, [getValues().artist]);
 
   return (
     <>
@@ -85,28 +90,6 @@ const Search = () => {
 };
 
 export default Search;
-
-interface ErrorsUIProps {
-  errors: string | undefined;
-}
-
-function ErrorMessage({ errors }: ErrorsUIProps) {
-  return (
-    <Flex mt="md" align="center" gap="sm">
-      <IconAlertCircle size={16} color="crimson" />
-      <Text
-        as="small"
-        size="small"
-        css={{
-          color: '$error',
-          fontWeight: 'bold',
-        }}
-      >
-        {errors}
-      </Text>
-    </Flex>
-  );
-}
 
 interface SubmitButtonProps {
   isLoading: boolean;

@@ -4,14 +4,14 @@ import MainLayout from '@components/layout/MainLayout';
 import Heading from '@components/home/Heading';
 import Search from '@components/home/Search';
 
-// export const getServerSideProps: GetServerSideProps = async () => {
-//   return {
-//     redirect: {
-//       permanent: false,
-//       destination: '/playlist/2h93pZq0e7k5yf4dywlkpM',
-//     },
-//   };
-// };
+export const getServerSideProps: GetServerSideProps = async () => {
+  return {
+    redirect: {
+      permanent: false,
+      destination: `/playlist/${process.env.FEATURED_ARTIST_ID}`,
+    },
+  };
+};
 
 const Home: NextPage = () => {
   return (

@@ -122,7 +122,7 @@ const Content = ({
         </Box>
       </Box>
       <Box flex="row" gap="sm">
-        {genres.slice(0, 3).map((genre) => (
+        {genres.slice(0, 2).map((genre) => (
           <Text color="faded" capitalize as="small" size="small" key={genre}>
             {genre}
           </Text>
