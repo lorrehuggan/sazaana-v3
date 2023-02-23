@@ -18,7 +18,14 @@ const ArtistCard = ({ data, isLoading, error }: Props) => {
 
   return (
     <Box flex="row" gap="sm">
-      <Box flex="row">
+      <Box
+        css={{
+          '@md': {
+            display: 'none',
+          },
+        }}
+        flex="row"
+      >
         <Image
           style={{
             objectFit: 'cover',
@@ -31,7 +38,28 @@ const ArtistCard = ({ data, isLoading, error }: Props) => {
           alt={data?.name}
         />
       </Box>
-      <Box css={{ minHeight: '120px' }} justify="between" flex="column">
+      <Box
+        css={{
+          display: 'none',
+          '@md': {
+            display: 'block',
+          },
+        }}
+        flex="row"
+      >
+        <Image
+          style={{
+            objectFit: 'cover',
+            borderRadius: '4px',
+            boxShadow: '1px 2px 5px 1px rgba(0,0,0,0.2)',
+          }}
+          width={80}
+          height={80}
+          src={`${data.images[2]?.url}`}
+          alt={data?.name}
+        />
+      </Box>
+      <Box css={{ minHeight: 'auto' }} justify="between" flex="column">
         <Box css={{ sy: '$sm' }}>
           <Text size="h4">{data?.name}</Text>
           <Text fontWeight="400" size="h6">

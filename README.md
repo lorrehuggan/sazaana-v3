@@ -1,28 +1,20 @@
-# Create T3 App
+# Sazaana
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+The Sazaana Web App is a simple and easy-to-use web application that allows users to create a personalized Spotify playlist based on their favorite artists. Using the Spotify API, the app provides users with a seamless experience to search for an artist, generate a playlist of top tracks based on tracks related to that arist. Users can filter the tracks presented in various ways, by tempo, energy, danceability, and other methods
 
-## What's next? How do I make an app with this?
+## Features
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+- Search for an artist and generate a playlist from songs related to that artist.
+- Filter tracks by tempo, energy, danceability, and other methods.
+- Log in with your Spotify account and save the playlist directly to your Spotify account.
+- A clean and user-friendly interface, making it easy to use.
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## License
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Learn More
+## Tech Stack
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+**Client:** NextJS, Zustand, Stitches JS, Radix UI
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
-
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
-
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+**Server:** tRPC, Prisma, Planet Scale
