@@ -12,6 +12,7 @@ import { api } from '@utils/api';
 import TracklistMenu from './TracklistMenu';
 import { useEffect, useRef } from 'react';
 import autoAnimate from '@formkit/auto-animate';
+import TrackImage from './TrackImage';
 
 const Tracklist = () => {
   const parent = useRef(null);
@@ -57,55 +58,27 @@ const Tracklist = () => {
   }
 
   return (
-    <Box spaceY="md" width="twoThirds">
+    <Box
+      css={{
+        '@lg': {
+          width: '100%',
+        },
+      }}
+      spaceY="md"
+      width="twoThirds"
+    >
       <TracklistMenu />
       <Box spaceY="md" ref={parent}>
         {data.map(({ track, features }) => (
           <Box flex="row" gap="md" key={track.id}>
+            <TrackImage track={track} trackPlayingId={trackPlayingId} />
             <Box
               css={{
-                position: 'relative',
-                rotate: trackPlayingId === track.preview_url ? '3deg' : '0deg',
-                transition: 'rotate 0.3s ease-in-out',
-                zIndex: trackPlayingId === track.preview_url ? 10 : 0,
+                width: '50%',
+                '@md': {
+                  flex: 1,
+                },
               }}
-            >
-              <Box
-                css={{
-                  '&:after': {
-                    content: '""',
-                    backgroundImage: `url(${track.album?.images[2]?.url!})`,
-                    width: track.album?.images[2]?.width,
-                    height: track.album?.images[2]?.height,
-                    position: 'absolute',
-                    left: 2,
-                    top: 12,
-                    filter: 'blur(10px)',
-                    zIndex: -1,
-                    transition: 'opacity 0.4s ease-in-out',
-                    scale: 0.8,
-                  },
-                }}
-              >
-                <Image
-                  style={{
-                    objectFit: 'cover',
-                    borderRadius: '4px',
-                    outline:
-                      trackPlayingId === track.preview_url
-                        ? '1px solid rgba(0, 0, 0, 1)'
-                        : '1px solid rgba(0, 0, 0, 0)',
-                    transition: 'outline 0.3s ease-in-out',
-                  }}
-                  width={track.album?.images[2]?.width}
-                  height={track.album?.images[2]?.height}
-                  src={track.album?.images[2]?.url!}
-                  alt={track.name!}
-                />
-              </Box>
-            </Box>
-            <Box
-              css={{ width: '50%' }}
               flex="column"
               justify="center"
               spaceY="xs"
@@ -145,7 +118,7 @@ const Tracklist = () => {
                 )}
                 {track.artists &&
                   track.artists
-                    .slice(0, 2)
+                    .slice(0, 1)
                     .map((artist) => (
                       <TrackArtist
                         key={artist.id}
@@ -155,7 +128,12 @@ const Tracklist = () => {
                     ))}
               </Flex>
             </Box>
-            <Box width="quarter" flex="column" justify="center">
+            <Box
+              css={{ '@md': { display: 'none' } }}
+              width="quarter"
+              flex="column"
+              justify="center"
+            >
               <Text color="faded" as="small" size="small">
                 {truncateString(track?.album?.name, 20)}
               </Text>

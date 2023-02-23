@@ -76,9 +76,9 @@ const AudioPlayer = ({ audio, tempo }: AudioPlayerProps) => {
     <Box
       flex="column"
       gap="md"
-      align="center"
+      align="end"
       justify="center"
-      css={{ flex: 1 }}
+      css={{ flex: 1, '@md': { flex: 'unset' } }}
     >
       {state && id === audio ? (
         <IconButton

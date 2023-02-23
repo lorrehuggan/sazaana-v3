@@ -21,7 +21,18 @@ const CurrentArtistCard = () => {
 
   return (
     <>
-      <Container as="section" mt="xl" size="lg" flex="row" css={{ gap: '$md' }}>
+      <Container
+        css={{
+          '@md': {
+            mt: '$lg',
+          },
+          gap: '$md',
+        }}
+        as="section"
+        mt="xl"
+        size="lg"
+        flex="row"
+      >
         <ArtistCard data={data} isLoading={isLoading} error={error?.message} />
       </Container>
     </>

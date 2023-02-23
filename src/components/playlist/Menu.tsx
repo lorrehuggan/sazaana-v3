@@ -57,7 +57,15 @@ const Menu = () => {
   }, [isCreatePlaylistSuccess]);
 
   return (
-    <Box spaceY="lg" css={{ flex: 1 }}>
+    <Box
+      spaceY="lg"
+      css={{
+        flex: 1,
+        '@lg': {
+          display: 'none',
+        },
+      }}
+    >
       <Box onSubmit={handleSubmit(onSubmit)} as="form" spaceY="md" radius="sm">
         <Text as="h6" size="h6">
           Keep This Playlist
