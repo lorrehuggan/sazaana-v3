@@ -49,6 +49,7 @@ export const {
     },
   },
   media: {
+    xs: '(max-width: 360px)',
     sm: '(max-width: 640px)',
     md: '(max-width: 768px)',
     lg: '(max-width: 1024px)',

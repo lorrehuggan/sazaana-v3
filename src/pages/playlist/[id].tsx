@@ -45,8 +45,8 @@ const Playlist: NextPage<Props> = ({ id }) => {
       <MainLayout>
         <Heading />
         <Search />
-        <CurrentArtistCard />
-        <PlaylistBody />
+        {/* <CurrentArtistCard />
+        <PlaylistBody /> */}
       </MainLayout>
     </>
   );

@@ -10,21 +10,36 @@ export const Text = styled('h1', {
       h2: {
         fontSize: '5.996rem',
         fontWeight: '700',
+        '@md': {
+          fontSize: '3.706rem',
+        },
       },
       h3: {
         fontSize: '3.706rem',
         fontWeight: '700',
+        '@md': {
+          fontSize: '2.291rem',
+        },
       },
       h4: {
         fontSize: '2.291rem',
         fontWeight: '700',
+        '@md': {
+          fontSize: '1.416rem',
+        },
       },
       h5: {
         fontSize: '1.416rem',
         fontWeight: '700',
+        '@md': {
+          fontSize: '1.125rem',
+        },
       },
       h6: {
         fontSize: '1.125rem',
+        '@md': {
+          fontSize: '0.975rem',
+        },
       },
       p: {
         fontSize: '0.875rem',
