@@ -23,7 +23,14 @@ const Navigation = () => {
         }}
       >
         <Box flex="row" align="center" justify="between" full>
-          <Text as="h4" size="h4">
+          <Text
+            css={{
+              letterSpacing: '-4px',
+            }}
+            uppercase
+            as="h4"
+            size="h4"
+          >
             sazaana
           </Text>
           <Box>
