@@ -5,6 +5,7 @@ import { useCurrentPlaylistStore } from '@state/currentPlaylist';
 import { api } from '@utils/api';
 import Menu from './Menu';
 import Tracklist from './Tracklist';
+import { Text } from '@components/ui/Text';
 
 const PlaylistBody = () => {
   const id = useCurrentArtistStore((state) => state.id);
@@ -32,6 +33,15 @@ const PlaylistBody = () => {
   useEffect(() => {
     setError(error);
   }, [error]);
+
+  if (isLoading)
+    return (
+      <Container height="full" mt="2xl" as="section" pb="2xl" size="lg">
+        <Text textAlign="center" size="h4">
+          Building Playlist...
+        </Text>
+      </Container>
+    );
 
   return (
     <>
