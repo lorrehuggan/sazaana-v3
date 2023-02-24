@@ -18,3 +18,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 **Client:** NextJS, Zustand, Stitches JS, Radix UI
 
 **Server:** tRPC, Prisma, Planet Scale
+--
