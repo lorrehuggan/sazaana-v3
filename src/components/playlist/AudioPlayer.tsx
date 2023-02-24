@@ -87,9 +87,9 @@ const AudioPlayer = ({ audio, tempo }: AudioPlayerProps) => {
             '&::after': {
               content: '""',
               position: 'absolute',
-              bottom: '-14px',
+              bottom: '-12px',
               left: 0,
-              height: '8px',
+              height: '3px',
               width: '0%',
               bg: '$gray10',
               borderRadius: '4px',

@@ -74,8 +74,12 @@ const FilterTracks = () => {
             Filter
           </Text>
           <Collapsible.Trigger asChild>
-            <IconButton variant="black">
-              {open ? <IconMinus size={20} /> : <IconPlus size={20} />}
+            <IconButton size="sm" variant="black">
+              {open ? (
+                <IconMinus color="#00000080" size={20} />
+              ) : (
+                <IconPlus color="#00000080" size={20} />
+              )}
             </IconButton>
           </Collapsible.Trigger>
         </Box>

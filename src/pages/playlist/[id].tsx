@@ -34,15 +34,7 @@ const Playlist: NextPage<Props> = ({ id }) => {
 
   return (
     <>
-      <NextSeo
-        title={`${
-          currentArtistLoading
-            ? 'Loading...'
-            : currentArtistData?.name + ' - ' + 'Sazaana Playlist'
-        }`}
-        description={`Sazaana is a music discovery platform that lets you listen to millions of songs from around the world.`}
-      />
-      <MainLayout>
+      <MainLayout title={`${currentArtistData?.name} | Sazaana`}>
         <Heading />
         <Search />
         <CurrentArtistCard />
