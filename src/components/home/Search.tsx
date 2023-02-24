@@ -53,7 +53,16 @@ const Search = () => {
 
   return (
     <>
-      <Container as="section" pt="2xl" size="lg">
+      <Container
+        css={{
+          '@md': {
+            pt: '$lg',
+          },
+        }}
+        as="section"
+        pt="2xl"
+        size="lg"
+      >
         <form onSubmit={handleSubmit(onSubmit)}>
           <Box
             flex="row"

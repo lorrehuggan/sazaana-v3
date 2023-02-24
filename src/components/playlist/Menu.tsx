@@ -54,6 +54,7 @@ const Menu = () => {
         setIsCreatePlaylistSuccess(false);
       }, 3000);
     }
+    return () => {};
   }, [isCreatePlaylistSuccess]);
 
   return (
@@ -62,7 +63,9 @@ const Menu = () => {
       css={{
         flex: 1,
         '@lg': {
-          display: 'none',
+          backgroundColor: '#00000010',
+          padding: '$md',
+          borderRadius: '4px',
         },
       }}
     >

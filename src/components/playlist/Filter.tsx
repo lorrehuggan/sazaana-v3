@@ -1,7 +1,11 @@
 import { Box } from '@components/ui/Box';
+import { CollapsibleRoot } from '@components/ui/Collapsible';
 import { Text } from '@components/ui/Text';
 import { useState } from 'react';
 import FilterSlider from './FilterSlider';
+import * as Collapsible from '@radix-ui/react-collapsible';
+import { IconButton } from '@components/ui/IconButton';
+import { IconMinus, IconPlus } from '@tabler/icons-react';
 
 const filterData = [
   {
@@ -55,24 +59,42 @@ const filterData = [
 ];
 
 const FilterTracks = () => {
+  const [open, setOpen] = useState(false);
   const [value, setValue] = useState('50');
 
   return (
-    <Box spaceY="lg" flex="column" full css={{ height: 'auto' }}>
-      <Text as="h6" size="h6">
-        Filter
-      </Text>
-      {filterData.map((filter) => (
-        <FilterSlider
-          key={filter.label}
-          step={filter.step}
-          min={filter.min}
-          max={filter.max}
-          label={filter.label}
-          low={filter.low}
-          high={filter.high}
-        />
-      ))}
+    <Box spaceY="lg" flex="column" full css={{}}>
+      <CollapsibleRoot
+        css={{ width: '100%' }}
+        open={open}
+        onOpenChange={setOpen}
+      >
+        <Box flex="row" justify="between">
+          <Text as="h6" size="h6">
+            Filter
+          </Text>
+          <Collapsible.Trigger asChild>
+            <IconButton variant="black">
+              {open ? <IconMinus size={20} /> : <IconPlus size={20} />}
+            </IconButton>
+          </Collapsible.Trigger>
+        </Box>
+        <Collapsible.Content>
+          <Box mt="md" spaceY="lg">
+            {filterData.map((filter) => (
+              <FilterSlider
+                key={filter.label}
+                step={filter.step}
+                min={filter.min}
+                max={filter.max}
+                label={filter.label}
+                low={filter.low}
+                high={filter.high}
+              />
+            ))}
+          </Box>
+        </Collapsible.Content>
+      </CollapsibleRoot>
     </Box>
   );
 };

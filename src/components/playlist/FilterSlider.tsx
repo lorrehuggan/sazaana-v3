@@ -112,7 +112,7 @@ const FilterSlider = ({ label, low, high, step, min, max }: Props) => {
   }
   return (
     <Box spaceY="sm">
-      <Text capitalize as="p" size="p">
+      <Text fontWeight="700" capitalize as="p" size="h6">
         {label}
       </Text>
       <SliderRoot
@@ -137,11 +137,21 @@ const FilterSlider = ({ label, low, high, step, min, max }: Props) => {
           <SliderRange />
         </SliderTrack>
         <SliderThumb
-          css={{ opacity: sliderHovered ? 1 : 0 }}
+          css={{
+            opacity: sliderHovered ? 1 : 0,
+            '@lg': {
+              opacity: 1,
+            },
+          }}
           id="slider-thumb"
         />
         <SliderThumb
-          css={{ opacity: sliderHovered ? 1 : 0 }}
+          css={{
+            opacity: sliderHovered ? 1 : 0,
+            '@lg': {
+              opacity: 1,
+            },
+          }}
           id="slider-thumb"
         />
       </SliderRoot>
