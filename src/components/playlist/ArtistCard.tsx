@@ -1,7 +1,7 @@
 import { Box } from '@components/ui/Box';
 import { Text } from '@components/ui/Text';
 import { intToString } from '@utils/index';
-import Image from 'next/image';
+import ArtistImage from './ArtistImage';
 
 interface Props {
   data: SpotifyApi.ArtistObjectFull | undefined;
@@ -26,16 +26,11 @@ const ArtistCard = ({ data, isLoading, error }: Props) => {
         }}
         flex="row"
       >
-        <Image
-          style={{
-            objectFit: 'cover',
-            borderRadius: '4px',
-            boxShadow: '1px 2px 5px 1px rgba(0,0,0,0.2)',
-          }}
-          width={120}
+        <ArtistImage
           height={120}
-          src={`${data.images[2]?.url}`}
-          alt={data?.name}
+          width={120}
+          name={data.name}
+          url={data.images[2]?.url || ''}
         />
       </Box>
       <Box
@@ -47,16 +42,11 @@ const ArtistCard = ({ data, isLoading, error }: Props) => {
         }}
         flex="row"
       >
-        <Image
-          style={{
-            objectFit: 'cover',
-            borderRadius: '4px',
-            boxShadow: '1px 2px 5px 1px rgba(0,0,0,0.2)',
-          }}
-          width={80}
+        <ArtistImage
           height={80}
-          src={`${data.images[2]?.url}`}
-          alt={data?.name}
+          width={80}
+          name={data.name}
+          url={data.images[2]?.url || ''}
         />
       </Box>
       <Box css={{ minHeight: 'auto' }} justify="between" flex="column">

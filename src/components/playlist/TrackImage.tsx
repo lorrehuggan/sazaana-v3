@@ -25,7 +25,7 @@ const TrackImage = ({ trackPlayingId, track }: Props) => {
             height: track.album?.images[2]?.height,
             position: 'absolute',
             left: 2,
-            top: 12,
+            top: 8,
             filter: 'blur(10px)',
             zIndex: -1,
             transition: 'opacity 0.4s ease-in-out',
