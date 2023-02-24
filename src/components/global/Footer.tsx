@@ -14,9 +14,14 @@ const Footer = () => {
       >
         <Text>
           © {new Date().getFullYear()} - Built by{' '}
-          <a href="https://twitter.com/lorrehuggan">Lorre Huggan</a>
+          <a
+            style={{ cursor: 'pointer' }}
+            href="https://twitter.com/lorrehuggan"
+          >
+            Lorre Huggan
+          </a>
         </Text>
-        <Text>Beta v0.3.0</Text>
+        <Text>Beta v0.1.0</Text>
       </Container>
     </Foot>
   );

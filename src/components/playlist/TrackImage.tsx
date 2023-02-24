@@ -16,32 +16,11 @@ const TrackImage = ({ trackPlayingId, track }: Props) => {
         zIndex: trackPlayingId === track.preview_url ? 10 : 0,
       }}
     >
-      <Box
-        css={{
-          '&:after': {
-            content: '""',
-            backgroundImage: `url(${track.album?.images[2]?.url!})`,
-            width: track.album?.images[2]?.width,
-            height: track.album?.images[2]?.height,
-            position: 'absolute',
-            left: 2,
-            top: 12,
-            filter: 'blur(10px)',
-            zIndex: -1,
-            transition: 'opacity 0.4s ease-in-out',
-            scale: 0.8,
-          },
-        }}
-      >
+      <Box>
         <Image
           style={{
             objectFit: 'cover',
             borderRadius: '4px',
-            outline:
-              trackPlayingId === track.preview_url
-                ? '1px solid rgba(0, 0, 0, 1)'
-                : '1px solid rgba(0, 0, 0, 0)',
-            transition: 'outline 0.3s ease-in-out',
           }}
           width={track.album?.images[2]?.width}
           height={track.album?.images[2]?.height}
