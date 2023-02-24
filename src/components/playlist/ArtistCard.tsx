@@ -89,7 +89,15 @@ const PlaceHolder = ({ status }: StatusProps) => {
   return (
     <Box flex="row" gap="sm">
       <Box
-        css={{ height: '120px', width: '120px', backgroundColor: '$gray7' }}
+        css={{
+          height: '120px',
+          width: '120px',
+          backgroundColor: '$gray7',
+          '@md': {
+            height: '80px',
+            width: '80px',
+          },
+        }}
         radius="md"
         flex="row"
       ></Box>

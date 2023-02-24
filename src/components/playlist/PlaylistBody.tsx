@@ -35,7 +35,19 @@ const PlaylistBody = () => {
 
   return (
     <>
-      <Container flex="row" gap="xl" mt="xl" as="section" pb="2xl" size="lg">
+      <Container
+        css={{
+          '@lg': {
+            flexDirection: 'column',
+          },
+        }}
+        flex="row"
+        gap="xl"
+        mt="xl"
+        as="section"
+        pb="2xl"
+        size="lg"
+      >
         <Menu />
         <Tracklist />
       </Container>
