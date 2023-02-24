@@ -69,7 +69,7 @@ const FilterTracks = () => {
         open={open}
         onOpenChange={setOpen}
       >
-        <Box flex="row" justify="between">
+        <Box align="center" flex="row" justify="between">
           <Text as="h6" size="h6">
             Filter
           </Text>
