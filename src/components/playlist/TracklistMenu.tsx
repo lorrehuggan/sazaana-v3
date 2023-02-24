@@ -1,9 +1,11 @@
 import { Box } from '@components/ui/Box';
+import { Text } from '@components/ui/Text';
 import TracklistMetrics from './TracklistMetrics';
 
 const TracklistMenu = () => {
   return (
-    <Box css={{ height: '32px' }} full flex="row" justify="end">
+    <Box full flex="row" justify="between">
+      <Text color="faded">Sazaana Playlist</Text>
       <TracklistMetrics />
     </Box>
   );

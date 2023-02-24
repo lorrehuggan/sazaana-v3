@@ -112,7 +112,7 @@ const FilterSlider = ({ label, low, high, step, min, max }: Props) => {
   }
   return (
     <Box spaceY="sm">
-      <Text capitalize as="p" size="p">
+      <Text fontWeight="700" capitalize as="p" size="h6">
         {label}
       </Text>
       <SliderRoot

@@ -54,6 +54,7 @@ const Menu = () => {
         setIsCreatePlaylistSuccess(false);
       }, 3000);
     }
+    return () => {};
   }, [isCreatePlaylistSuccess]);
 
   return (

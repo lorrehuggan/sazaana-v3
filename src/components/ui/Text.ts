@@ -44,6 +44,7 @@ export const Text = styled('h1', {
       p: {
         fontSize: '0.875rem',
         fontWeight: '400',
+        lineHeight: '125%',
       },
       small: {
         fontSize: '0.75rem',
