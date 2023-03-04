@@ -100,7 +100,7 @@ const Content = ({
   return (
     <Box spaceY="md">
       <Box flex="row" gap="md" align="center">
-        <Image
+        <img
           style={{ borderRadius: '4px', objectFit: 'cover' }}
           src={url ? url : ''}
           alt={name}
