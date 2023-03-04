@@ -25,7 +25,7 @@ const Navigation = () => {
         <Box flex="row" align="center" justify="between" full>
           <Text
             css={{
-              letterSpacing: '-4px',
+              letterSpacing: '-8px',
             }}
             uppercase
             as="h4"

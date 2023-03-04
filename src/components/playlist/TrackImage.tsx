@@ -1,5 +1,4 @@
 import { Box } from '@components/ui/Box';
-import Image from 'next/image';
 
 interface Props {
   trackPlayingId: string;
@@ -17,7 +16,7 @@ const TrackImage = ({ trackPlayingId, track }: Props) => {
       }}
     >
       <Box>
-        <Image
+        <img
           style={{
             objectFit: 'cover',
             borderRadius: '4px',
