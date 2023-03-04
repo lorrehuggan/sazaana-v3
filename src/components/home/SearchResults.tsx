@@ -1,6 +1,5 @@
 import { Box } from '@components/ui/Box';
 import { Text } from '@components/ui/Text';
-import Image from 'next/image';
 import Link from 'next/link';
 import { Dispatch, FC, SetStateAction, useEffect, useRef } from 'react';
 
@@ -49,7 +48,7 @@ const SearchResults: FC<Props> = ({ items, setResultsOpen }) => {
                   height: '$lg',
                 }}
               >
-                <Image
+                <img
                   style={{
                     objectFit: 'cover',
                     borderRadius: '4px',
