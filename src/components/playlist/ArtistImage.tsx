@@ -48,7 +48,7 @@ const ArtistImage = ({ name, url, width, height }: Props) => {
           },
         }}
       >
-        <Image
+        <img
           style={{
             objectFit: 'cover',
             borderRadius: '4px',
