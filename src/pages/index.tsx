@@ -19,7 +19,6 @@ const Home: NextPage = () => {
       <MainLayout title="Sazaana">
         <Heading />
         <Search />
-        <Following />
       </MainLayout>
     </>
   );
