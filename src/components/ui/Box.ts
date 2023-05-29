@@ -1,247 +1,263 @@
-import { styled } from '../../../stitches.config';
-import { motion } from 'framer-motion';
+import { styled } from "../../../stitches.config";
+import { motion } from "framer-motion";
 
-export const Box = styled('div', {
+export const Box = styled("div", {
   variants: {
     width: {
       full: {
-        width: '100%',
+        width: "100%",
       },
       half: {
-        width: '50%',
+        width: "50%",
       },
       third: {
-        width: '33.333%',
+        width: "33.333%",
       },
       quarter: {
-        width: '25%',
+        width: "25%",
       },
       threeQuarters: {
-        width: '75%',
+        width: "75%",
       },
       twoThirds: {
-        width: '66.666%',
+        width: "66.666%",
       },
     },
     padding: {
       xs: {
-        padding: '$xs',
+        padding: "$xs",
       },
       sm: {
-        padding: '$sm',
+        padding: "$sm",
       },
       md: {
-        padding: '$md',
+        padding: "$md",
       },
       lg: {
-        padding: '$lg',
+        padding: "$lg",
       },
       xl: {
-        padding: '$xl',
+        padding: "$xl",
       },
-      '2xl': {
-        padding: '$2xl',
+      "2xl": {
+        padding: "$2xl",
       },
     },
     border: {
       full: {
-        border: '1px solid $gray10',
+        border: "1px solid $gray10",
       },
       top: {
-        borderTop: '1px solid $gray10',
+        borderTop: "1px solid $gray10",
       },
       bottom: {
-        borderBottom: '1px solid $gray10',
+        borderBottom: "1px solid $gray10",
       },
       right: {
-        borderRight: '1px solid $gray10',
+        borderRight: "1px solid $gray10",
       },
       left: {
-        borderLeft: '1px solid $gray10',
+        borderLeft: "1px solid $gray10",
       },
     },
     m: {
       xs: {
-        margin: '$xs',
+        margin: "$xs",
       },
       sm: {
-        margin: '$sm',
+        margin: "$sm",
       },
       md: {
-        margin: '$md',
+        margin: "$md",
       },
       lg: {
-        margin: '$lg',
+        margin: "$lg",
       },
       xl: {
-        margin: '$xl',
+        margin: "$xl",
       },
-      '2xl': {
-        margin: '$2xl',
+      "2xl": {
+        margin: "$2xl",
       },
     },
     mt: {
       xs: {
-        marginTop: '$xs',
+        marginTop: "$xs",
       },
       sm: {
-        marginTop: '$sm',
+        marginTop: "$sm",
       },
       md: {
-        marginTop: '$md',
+        marginTop: "$md",
       },
       lg: {
-        marginTop: '$lg',
+        marginTop: "$lg",
       },
       xl: {
-        marginTop: '$xl',
+        marginTop: "$xl",
       },
-      '2xl': {
-        marginTop: '$2xl',
+      "2xl": {
+        marginTop: "$2xl",
       },
     },
     mb: {
       xs: {
-        marginBottom: '$xs',
+        marginBottom: "$xs",
       },
       sm: {
-        marginBottom: '$sm',
+        marginBottom: "$sm",
       },
       md: {
-        marginBottom: '$md',
+        marginBottom: "$md",
       },
       lg: {
-        marginBottom: '$lg',
+        marginBottom: "$lg",
       },
       xl: {
-        marginBottom: '$xl',
+        marginBottom: "$xl",
       },
-      '2xl': {
-        marginBottom: '$2xl',
+      "2xl": {
+        marginBottom: "$2xl",
       },
     },
     radius: {
       none: {
-        borderRadius: '0px',
+        borderRadius: "0px",
       },
       sm: {
-        borderRadius: '4px',
+        borderRadius: "4px",
       },
       md: {
-        borderRadius: '8px',
+        borderRadius: "8px",
       },
       lg: {
-        borderRadius: '12px',
+        borderRadius: "12px",
       },
     },
     spaceY: {
       xs: {
-        sy: '$xs',
+        sy: "$xs",
       },
       sm: {
-        sy: '$sm',
+        sy: "$sm",
       },
       md: {
-        sy: '$md',
+        sy: "$md",
       },
       lg: {
-        sy: '$lg',
+        sy: "$lg",
       },
       xl: {
-        sy: '$xl',
+        sy: "$xl",
       },
     },
     spaceX: {
       xs: {
-        sx: '$xs',
+        sx: "$xs",
       },
       sm: {
-        sx: '$sm',
+        sx: "$sm",
       },
       md: {
-        sx: '$md',
+        sx: "$md",
       },
       lg: {
-        sx: '$lg',
+        sx: "$lg",
       },
       xl: {
-        sx: '$xl',
+        sx: "$xl",
       },
     },
     gap: {
       xs: {
-        gap: '$xs',
+        gap: "$xs",
       },
       sm: {
-        gap: '$sm',
+        gap: "$sm",
       },
       md: {
-        gap: '$md',
+        gap: "$md",
       },
       lg: {
-        gap: '$lg',
+        gap: "$lg",
       },
       xl: {
-        gap: '$xl',
+        gap: "$xl",
       },
-      '2xl': {
-        gap: '$2xl',
+      "2xl": {
+        gap: "$2xl",
       },
     },
 
     flex: {
       row: {
-        display: 'flex',
-        flexDirection: 'row',
+        display: "flex",
+        flexDirection: "row",
       },
       column: {
-        display: 'flex',
-        flexDirection: 'column',
+        display: "flex",
+        flexDirection: "column",
       },
     },
     justify: {
       center: {
-        justifyContent: 'center',
+        justifyContent: "center",
       },
       start: {
-        justifyContent: 'flex-start',
+        justifyContent: "flex-start",
       },
       end: {
-        justifyContent: 'flex-end',
+        justifyContent: "flex-end",
       },
       between: {
-        justifyContent: 'space-between',
+        justifyContent: "space-between",
       },
       around: {
-        justifyContent: 'space-around',
+        justifyContent: "space-around",
       },
     },
     align: {
       center: {
-        alignItems: 'center',
+        alignItems: "center",
       },
       start: {
-        alignItems: 'flex-start',
+        alignItems: "flex-start",
       },
       end: {
-        alignItems: 'flex-end',
+        alignItems: "flex-end",
       },
       between: {
-        alignItems: 'space-between',
+        alignItems: "space-between",
       },
     },
     full: {
       true: {
-        width: '100%',
+        width: "100%",
       },
     },
     tall: {
       true: {
-        height: '100%',
+        height: "100%",
+      },
+    },
+    bg: {
+      primary: {
+        backgroundColor: "$primary",
+      },
+      secondary: {
+        backgroundColor: "$secondary",
+      },
+      dark: {
+        backgroundColor: "$dark",
+      },
+    },
+    shadow: {
+      true: {
+        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
       },
     },
   },
   defaultVariants: {
-    radius: 'none',
+    radius: "none",
   },
 });

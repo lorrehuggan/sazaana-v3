@@ -1,14 +1,15 @@
-import { Box } from '@components/ui/Box';
+import { Box } from "@components/ui/Box";
 import {
   SliderRange,
   SliderRoot,
   SliderThumb,
   SliderTrack,
-} from '@components/ui/Slider';
-import { Text } from '@components/ui/Text';
-import { useCurrentFeaturesStore } from '@state/currentFeatures';
-import { useCurrentPlaylistStore } from '@state/currentPlaylist';
-import { useMemo, useState } from 'react';
+} from "@components/ui/Slider";
+import { Text } from "@components/ui/Text";
+import { useCurrentFeaturesStore } from "@state/currentFeatures";
+import { Filter } from "@state/currentFilterState";
+import { useCurrentPlaylistStore } from "@state/currentPlaylist";
+import { useMemo, useState } from "react";
 
 interface Props {
   label: string;
@@ -17,9 +18,18 @@ interface Props {
   step: number;
   min: number;
   max: number;
+  setFilter: (filter: Filter) => void;
 }
 
-const FilterSlider = ({ label, low, high, step, min, max }: Props) => {
+const FilterSlider = ({
+  label,
+  low,
+  high,
+  step,
+  min,
+  max,
+  setFilter,
+}: Props) => {
   const {
     popularity,
     tempo,
@@ -35,7 +45,9 @@ const FilterSlider = ({ label, low, high, step, min, max }: Props) => {
     setAcousticness,
   } = useCurrentFeaturesStore((state) => state);
 
-  const { setData, shadowData } = useCurrentPlaylistStore((state) => state);
+  const { setData, shadowData, data } = useCurrentPlaylistStore(
+    (state) => state
+  );
   const [sliderHovered, setSliderHovered] = useState(false);
 
   useMemo(() => {
@@ -84,27 +96,27 @@ const FilterSlider = ({ label, low, high, step, min, max }: Props) => {
 
   function update(e: number[]) {
     switch (label) {
-      case 'popularity':
+      case "popularity":
         setPopularity(e);
 
         break;
-      case 'energy':
+      case "energy":
         setEnergy(e);
 
         break;
-      case 'tempo':
+      case "tempo":
         setTempo(e);
 
         break;
-      case 'danceability':
+      case "danceability":
         setDanceability(e);
 
         break;
-      case 'mood':
+      case "mood":
         setValence(e);
 
         break;
-      case 'acousticness':
+      case "acousticness":
         setAcousticness(e);
 
         break;
@@ -129,7 +141,7 @@ const FilterSlider = ({ label, low, high, step, min, max }: Props) => {
         onValueChange={(e) => {
           update(e);
         }}
-        onValueCommit={(e) => {}}
+        onValueCommit={(e) => { }}
         min={min}
         max={max}
       >
@@ -139,7 +151,7 @@ const FilterSlider = ({ label, low, high, step, min, max }: Props) => {
         <SliderThumb
           css={{
             opacity: sliderHovered ? 1 : 0,
-            '@lg': {
+            "@lg": {
               opacity: 1,
             },
           }}
@@ -148,7 +160,7 @@ const FilterSlider = ({ label, low, high, step, min, max }: Props) => {
         <SliderThumb
           css={{
             opacity: sliderHovered ? 1 : 0,
-            '@lg': {
+            "@lg": {
               opacity: 1,
             },
           }}

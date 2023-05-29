@@ -1,13 +1,10 @@
 import { Container } from '@components/ui/Container';
-import { Flex } from '@components/ui/Flex';
 import { Text } from '@components/ui/Text';
 import { styled, theme } from '../../../stitches.config';
-import { IconMenu } from '@tabler/icons-react';
 import { Box } from '@components/ui/Box';
 import Link from 'next/link';
 import { Button } from '@components/ui/Button';
 import { signOut, useSession } from 'next-auth/react';
-import Image from 'next/image';
 import Avatar from './Avatar';
 
 const Navigation = () => {

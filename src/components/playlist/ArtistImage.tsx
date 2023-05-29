@@ -1,5 +1,5 @@
-import { Box } from '@components/ui/Box';
-import Image from 'next/image';
+import { Box } from "@components/ui/Box";
+import Image from "next/image";
 
 interface Props {
   url: string;
@@ -12,37 +12,37 @@ const ArtistImage = ({ name, url, width, height }: Props) => {
   return (
     <Box
       css={{
-        position: 'relative',
+        position: "relative",
       }}
     >
       <Box
         css={{
-          borderRadius: '4px',
+          borderRadius: "4px",
           // boxShadow: '2px 2px 7px 1px rgba(0, 0, 0, 0.3)',
-          '&:after': {
+          "&:after": {
             content: '""',
             backgroundImage: `url(${url!})`,
             width: width,
             height: height,
-            position: 'absolute',
+            position: "absolute",
             left: 2,
-            top: 14,
-            filter: 'blur(8px)',
+            top: 10,
+            filter: "blur(8px)",
             zIndex: -1,
-            transition: 'opacity 0.4s ease-in-out',
+            transition: "opacity 0.4s ease-in-out",
             scale: 0.8,
           },
-          '&:before': {
+          "&:before": {
             content: '""',
             backgroundImage: `url(${url!})`,
             width: width,
             height: height,
-            position: 'absolute',
+            position: "absolute",
             left: 2,
-            top: 16,
-            filter: 'blur(14px)',
+            top: 10,
+            filter: "blur(14px)",
             zIndex: -2,
-            transition: 'opacity 0.4s ease-in-out',
+            transition: "opacity 0.4s ease-in-out",
             opacity: 0.8,
             scale: 0.8,
           },
@@ -50,8 +50,8 @@ const ArtistImage = ({ name, url, width, height }: Props) => {
       >
         <img
           style={{
-            objectFit: 'cover',
-            borderRadius: '4px',
+            objectFit: "cover",
+            borderRadius: "4px",
           }}
           width={width}
           height={height}

@@ -1,25 +1,22 @@
-import { useForm } from 'react-hook-form';
-import z from 'zod';
-import { styled } from '../../../stitches.config';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Container } from '@components/ui/Container';
-import { Flex } from '@components/ui/Flex';
-import { IconButton } from '@components/ui/IconButton';
-import { Text } from '@components/ui/Text';
+import { useForm } from "react-hook-form";
+import z from "zod";
+import { styled } from "../../../stitches.config";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Container } from "@components/ui/Container";
+import { IconButton } from "@components/ui/IconButton";
 import {
   IconSearch,
   IconArrowBadgeRight,
-  IconAlertCircle,
   IconReload,
-} from '@tabler/icons-react';
-import { SearchSchema } from '@utils/schema';
-import { api } from '@utils/api';
-import { spinAnimation } from '@utils/keyframes';
-import { Box } from '@components/ui/Box';
-import SearchResults from './SearchResults';
-import { useEffect, useState } from 'react';
-import { useCurrentPlaylistStore } from '@state/currentPlaylist';
-import ErrorMessage from '@components/global/ErrorMessage';
+} from "@tabler/icons-react";
+import { SearchSchema } from "@utils/schema";
+import { api } from "@utils/api";
+import { spinAnimation } from "@utils/keyframes";
+import { Box } from "@components/ui/Box";
+import SearchResults from "./SearchResults";
+import { useEffect, useState } from "react";
+import { useCurrentPlaylistStore } from "@state/currentPlaylist";
+import ErrorMessage from "@components/global/ErrorMessage";
 
 type SearchType = z.infer<typeof SearchSchema>;
 
@@ -28,7 +25,6 @@ const Search = () => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
     getValues,
   } = useForm<SearchType>({
@@ -41,6 +37,9 @@ const Search = () => {
         setResultsOpen(true);
       },
     });
+
+  const { isLoading: followsIsLoading, data: followsData } =
+    api.userRouter.getFollowedArtists.useQuery();
 
   async function onSubmit(data: SearchType) {
     // reset();
@@ -55,8 +54,8 @@ const Search = () => {
     <>
       <Container
         css={{
-          '@md': {
-            pt: '$lg',
+          "@md": {
+            pt: "$lg",
           },
         }}
         as="section"
@@ -67,7 +66,7 @@ const Search = () => {
           <Box
             flex="row"
             border="bottom"
-            css={{ height: '3.25rem' }}
+            css={{ height: "3.25rem" }}
             align="center"
             gap="sm"
           >
@@ -75,14 +74,14 @@ const Search = () => {
               <IconSearch size={20} color="#00000090" />
             </div>
             <Input
-              {...register('artist')}
+              {...register("artist")}
               type="text"
               placeholder="Search by Artist"
               aria-label="Search by Artist"
               autoComplete="off"
               css={{
-                h: '100%',
-                fontSize: '$md',
+                h: "100%",
+                fontSize: "$md",
               }}
             />
             <SubmitButton isLoading={isLoading} />
@@ -127,13 +126,13 @@ function SubmitButton({ isLoading }: SubmitButtonProps) {
   );
 }
 
-const Input = styled('input', {
+const Input = styled("input", {
   // Reset
-  appearance: 'none',
-  border: 'none',
-  outline: 'none',
-  background: 'none',
+  appearance: "none",
+  border: "none",
+  outline: "none",
+  background: "none",
 
-  width: '100%',
-  color: '$gray11',
+  width: "100%",
+  color: "$gray11",
 });
