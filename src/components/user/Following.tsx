@@ -15,8 +15,18 @@ const Following = () => {
     api.userRouter.getFollowedArtists.useQuery();
 
   if (!session) return null;
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error</div>;
+  if (isLoading)
+    return (
+      <Container size="lg" mt="lg">
+        Loading...
+      </Container>
+    );
+  if (isError)
+    return (
+      <Container size="lg" mt="lg">
+        Opps somthing went wrong...
+      </Container>
+    );
 
   return (
     <>

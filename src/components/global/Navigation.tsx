@@ -22,7 +22,12 @@ const Navigation = () => {
       >
         <Box flex="row" align="center" justify="between" full>
           <Link
-            style={{ display: "flex", alignItems: "center", gap: "2px" }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "2px",
+              cursor: "pointer",
+            }}
             href="/"
           >
             <Box bg="primary" padding="sm" radius="sm" css={{ px: "$md" }}>
