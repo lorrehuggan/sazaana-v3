@@ -19,7 +19,7 @@ interface Props {
   step: number;
   min: number;
   max: number;
-  setFilter: (filter: Filter) => void;
+  setFilter: (filter: Filter[]) => void;
 }
 
 const FilterSlider = ({
