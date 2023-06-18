@@ -1,3 +1,4 @@
+import React from "react";
 import { Box } from "@components/ui/Box";
 import {
   SliderRange,

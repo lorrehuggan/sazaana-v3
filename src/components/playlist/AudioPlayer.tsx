@@ -1,15 +1,15 @@
-import { Howl, Howler } from 'howler';
-import { Box } from '@components/ui/Box';
-import { IconButton } from '@components/ui/IconButton';
+import React from "react";
+import { Howl, Howler } from "howler";
+import { Box } from "@components/ui/Box";
+import { IconButton } from "@components/ui/IconButton";
 import {
   IconCircleDashed,
   IconPlayerPlay,
   IconPlayerStop,
-} from '@tabler/icons-react';
-import { useEffect, useRef, useState } from 'react';
-import { audioPlayingAnimation, playbackAnimation } from '@utils/keyframes';
-import { useAudioPlayingState } from '@state/audioPlaying';
-import { ProgressIndicator, ProgressRoot } from '@components/ui/Progress';
+} from "@tabler/icons-react";
+import { useEffect, useRef, useState } from "react";
+import { audioPlayingAnimation, playbackAnimation } from "@utils/keyframes";
+import { useAudioPlayingState } from "@state/audioPlaying";
 
 interface AudioPlayerProps {
   audio: string | null | undefined;
@@ -26,7 +26,7 @@ const AudioPlayer = ({ audio, tempo }: AudioPlayerProps) => {
     return () => {
       if (id) {
         Howler.stop();
-        setId('');
+        setId("");
         setState(false);
       }
     };
@@ -35,7 +35,7 @@ const AudioPlayer = ({ audio, tempo }: AudioPlayerProps) => {
   function playAudio(audio: string) {
     if (id === audio) {
       Howler.stop();
-      setId('');
+      setId("");
       setState(false);
       return;
     }
@@ -48,15 +48,15 @@ const AudioPlayer = ({ audio, tempo }: AudioPlayerProps) => {
       src: [audio],
       html5: true,
       autoplay: false,
-      format: ['mp3'],
+      format: ["mp3"],
       loop: false,
       volume: 0.6,
-      onload: function () {},
-      onplay: function () {
+      onload: function() { },
+      onplay: function() {
         setState(true);
       },
-      onend: function () {
-        setId('');
+      onend: function() {
+        setId("");
         setState(false);
       },
     });
@@ -67,7 +67,7 @@ const AudioPlayer = ({ audio, tempo }: AudioPlayerProps) => {
 
   function stopAudio() {
     Howler.stop();
-    setId('');
+    setId("");
   }
 
   if (!audio) return null;
@@ -78,21 +78,21 @@ const AudioPlayer = ({ audio, tempo }: AudioPlayerProps) => {
       gap="md"
       align="end"
       justify="center"
-      css={{ flex: 1, '@md': { flex: 'unset' } }}
+      css={{ flex: 1, "@md": { flex: "unset" } }}
     >
       {state && id === audio ? (
         <IconButton
           css={{
-            position: 'relative',
-            '&::after': {
+            position: "relative",
+            "&::after": {
               content: '""',
-              position: 'absolute',
-              bottom: '-12px',
+              position: "absolute",
+              bottom: "-12px",
               left: 0,
-              height: '3px',
-              width: '0%',
-              bg: '$gray10',
-              borderRadius: '4px',
+              height: "3px",
+              width: "0%",
+              bg: "$gray10",
+              borderRadius: "4px",
               zIndex: -1,
               animation: playbackAnimation(30),
             },

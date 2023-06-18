@@ -1,3 +1,4 @@
+import React from "react";
 import { Text } from "@components/ui/Text";
 import { truncateString } from "@utils/index";
 import Link from "next/link";

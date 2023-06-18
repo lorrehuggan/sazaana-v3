@@ -1,3 +1,4 @@
+import React from "react";
 import { Box } from "@components/ui/Box";
 import { CollapsibleRoot } from "@components/ui/Collapsible";
 import { Text } from "@components/ui/Text";

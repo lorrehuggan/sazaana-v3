@@ -1,13 +1,14 @@
-import { Box } from '@components/ui/Box';
-import { ToggleGroupItem, ToggleGroupRoot } from '@components/ui/ToggleGroup';
-import ToolTipButton from '@components/ui/ToolTip';
-import { useCurrentArtistStore } from '@state/currentArtist';
+import React from "react";
+import { Box } from "@components/ui/Box";
+import { ToggleGroupItem, ToggleGroupRoot } from "@components/ui/ToggleGroup";
+import ToolTipButton from "@components/ui/ToolTip";
+import { useCurrentArtistStore } from "@state/currentArtist";
 import {
   IconActivity,
   IconBounceRight,
   IconSpeedboat,
-} from '@tabler/icons-react';
-import { api } from '@utils/api';
+} from "@tabler/icons-react";
+import { api } from "@utils/api";
 
 interface Props {
   value: string;
@@ -23,7 +24,7 @@ const TracklistSort = ({ value, setValue }: Props) => {
         onValueChange={(value) => {
           if (value) setValue(value);
         }}
-        onBlur={() => setValue('')}
+        onBlur={() => setValue("")}
       >
         <ToolTipButton message="Sort by tempo">
           <ToggleGroupItem value="tempo">

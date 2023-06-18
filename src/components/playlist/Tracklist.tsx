@@ -1,18 +1,18 @@
-import Image from 'next/image';
-import { Box } from '@components/ui/Box';
-import { Flex } from '@components/ui/Flex';
-import { Text } from '@components/ui/Text';
-import { truncateString } from '@utils/index';
-import AudioPlayer from './AudioPlayer';
-import { useAudioPlayingState } from '@state/audioPlaying';
-import TrackListPlaceHolder from './TracklistPlaceholder';
-import { useCurrentPlaylistStore } from '@state/currentPlaylist';
-import TrackArtist from './TrackArtist';
-import { api } from '@utils/api';
-import TracklistMenu from './TracklistMenu';
-import { useEffect, useRef } from 'react';
-import autoAnimate from '@formkit/auto-animate';
-import TrackImage from './TrackImage';
+import React from "react";
+import { Box } from "@components/ui/Box";
+import { Flex } from "@components/ui/Flex";
+import { Text } from "@components/ui/Text";
+import { truncateString } from "@utils/index";
+import AudioPlayer from "./AudioPlayer";
+import { useAudioPlayingState } from "@state/audioPlaying";
+import TrackListPlaceHolder from "./TracklistPlaceholder";
+import { useCurrentPlaylistStore } from "@state/currentPlaylist";
+import TrackArtist from "./TrackArtist";
+import { api } from "@utils/api";
+import TracklistMenu from "./TracklistMenu";
+import { useEffect, useRef } from "react";
+import autoAnimate from "@formkit/auto-animate";
+import TrackImage from "./TrackImage";
 
 const Tracklist = () => {
   const parent = useRef(null);
@@ -23,18 +23,18 @@ const Tracklist = () => {
 
   useEffect(() => {
     parent.current &&
-      autoAnimate(parent.current, { duration: 500, easing: 'ease-in-out' });
+      autoAnimate(parent.current, { duration: 500, easing: "ease-in-out" });
   }, [parent]);
 
   const createPlaylist = api.userRouter.createPlaylist.useMutation({
     onSuccess: (data) => {
-      console.log('success');
+      console.log("success");
     },
     onMutate: (s) => {
-      console.log('mutate');
+      console.log("mutate");
     },
     onError: (e) => {
-      console.log('error');
+      console.log("error");
     },
   });
 
@@ -46,7 +46,7 @@ const Tracklist = () => {
 
   function handleCreatePlaylist() {
     createPlaylist.mutate({
-      name: 'test',
+      name: "test",
       tracks: data.map((track) => track.track.uri),
     });
   }
@@ -60,8 +60,8 @@ const Tracklist = () => {
   return (
     <Box
       css={{
-        '@lg': {
-          width: '100%',
+        "@lg": {
+          width: "100%",
         },
       }}
       spaceY="md"
@@ -74,8 +74,8 @@ const Tracklist = () => {
             <TrackImage track={track} trackPlayingId={trackPlayingId} />
             <Box
               css={{
-                width: '50%',
-                '@md': {
+                width: "50%",
+                "@md": {
                   flex: 1,
                 },
               }}
@@ -86,15 +86,15 @@ const Tracklist = () => {
               <a href={track.external_urls?.spotify}>
                 <Text
                   css={{
-                    cursor: 'pointer',
+                    cursor: "pointer",
                     color:
-                      trackPlayingId === track.preview_url ? '$primary' : '',
+                      trackPlayingId === track.preview_url ? "$primary" : "",
                   }}
                   hover="fade"
                   as="h6"
                   size="h6"
                 >
-                  {truncateString(track.name?.split('(')[0]!, 26)}
+                  {truncateString(track.name?.split("(")[0]!, 26)}
                 </Text>
               </a>
               <Flex align="center" gap="sm">
@@ -104,13 +104,13 @@ const Tracklist = () => {
                     justify="center"
                     align="center"
                     css={{
-                      width: '8px',
-                      height: '8px',
-                      borderRadius: '4px',
-                      backgroundColor: '$gray9',
-                      fontSize: '10px',
-                      padding: '10px',
-                      color: '$gray1',
+                      width: "8px",
+                      height: "8px",
+                      borderRadius: "4px",
+                      backgroundColor: "$gray9",
+                      fontSize: "10px",
+                      padding: "10px",
+                      color: "$gray1",
                     }}
                   >
                     E
@@ -129,7 +129,7 @@ const Tracklist = () => {
               </Flex>
             </Box>
             <Box
-              css={{ '@md': { display: 'none' } }}
+              css={{ "@md": { display: "none" } }}
               width="quarter"
               flex="column"
               justify="center"
@@ -149,5 +149,5 @@ const Tracklist = () => {
 export default Tracklist;
 
 interface StatusProps {
-  status: 'Loading' | 'Error';
+  status: "Loading" | "Error";
 }
