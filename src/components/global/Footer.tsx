@@ -1,6 +1,7 @@
-import { Container } from '@components/ui/Container';
-import { Text } from '@components/ui/Text';
-import { styled } from '../../../stitches.config';
+import React from "react";
+import { Container } from "@components/ui/Container";
+import { Text } from "@components/ui/Text";
+import { styled } from "../../../stitches.config";
 
 const Footer = () => {
   return (
@@ -10,12 +11,12 @@ const Footer = () => {
         flex="row"
         justify="between"
         align="center"
-        css={{ height: '100%' }}
+        css={{ height: "100%" }}
       >
         <Text>
-          © {new Date().getFullYear()} - Built by{' '}
+          © {new Date().getFullYear()} - Built by{" "}
           <a
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: "pointer" }}
             href="https://twitter.com/lorrehuggan"
           >
             Lorre Huggan
@@ -29,6 +30,6 @@ const Footer = () => {
 
 export default Footer;
 
-const Foot = styled('footer', {
-  height: '4rem',
+const Foot = styled("footer", {
+  height: "4rem",
 });

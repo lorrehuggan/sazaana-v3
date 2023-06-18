@@ -1,4 +1,5 @@
-import { AvatarFallback, AvatarImage, AvatarRoot } from '@components/ui/Avatar';
+import React from "react";
+import { AvatarFallback, AvatarImage, AvatarRoot } from "@components/ui/Avatar";
 
 interface Props {
   src: string;
@@ -8,12 +9,12 @@ interface Props {
 
 const Avatar = ({ src, alt, name }: Props) => {
   function getInitials(name: string) {
-    const firstLetter = name.split('')[0];
-    const lastLetter = name.split(' ')[0];
+    const firstLetter = name.split("")[0];
+    const lastLetter = name.split(" ")[0];
     if (firstLetter && lastLetter) {
       return firstLetter + lastLetter;
     }
-    return name.split('')[0];
+    return name.split("")[0];
   }
   return (
     <AvatarRoot>

@@ -1,6 +1,7 @@
-import { Box } from '@components/ui/Box';
-import { Text } from '@components/ui/Text';
-import TracklistMetrics from './TracklistMetrics';
+import React from "react";
+import { Box } from "@components/ui/Box";
+import { Text } from "@components/ui/Text";
+import TracklistMetrics from "./TracklistMetrics";
 
 const TracklistMenu = () => {
   return (

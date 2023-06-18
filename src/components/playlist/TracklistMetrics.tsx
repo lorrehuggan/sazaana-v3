@@ -1,7 +1,8 @@
-import { Box } from '@components/ui/Box';
-import { Text } from '@components/ui/Text';
-import { useCurrentPlaylistStore } from '@state/currentPlaylist';
-import { convertMsToMinutesAndSeconds } from '@utils/index';
+import React from "react";
+import { Box } from "@components/ui/Box";
+import { Text } from "@components/ui/Text";
+import { useCurrentPlaylistStore } from "@state/currentPlaylist";
+import { convertMsToMinutesAndSeconds } from "@utils/index";
 
 const TracklistMetrics = () => {
   const data = useCurrentPlaylistStore((state) => state.data);

@@ -1,8 +1,9 @@
-import { Box } from '@components/ui/Box';
-import { Flex } from '@components/ui/Flex';
-import { IconButton } from '@components/ui/IconButton';
-import { Text } from '@components/ui/Text';
-import { IconPlayerPlay } from '@tabler/icons-react';
+import React from "react";
+import { Box } from "@components/ui/Box";
+import { Flex } from "@components/ui/Flex";
+import { IconButton } from "@components/ui/IconButton";
+import { Text } from "@components/ui/Text";
+import { IconPlayerPlay } from "@tabler/icons-react";
 
 interface Props {
   status: string;
@@ -14,18 +15,18 @@ const TrackListPlaceHolder = ({ status }: Props) => {
       {new Array(1).fill(0).map((_, i) => (
         <Flex key={i} gap="md">
           <Box
-            css={{ width: '64px', height: '64px', backgroundColor: '$gray6' }}
+            css={{ width: "64px", height: "64px", backgroundColor: "$gray6" }}
             radius="md"
           ></Box>
 
           <Box
-            css={{ width: '50%' }}
+            css={{ width: "50%" }}
             flex="column"
             justify="center"
             spaceY="xs"
           >
             <a>
-              <Text css={{ cursor: 'pointer' }} hover="fade" as="h6" size="h6">
+              <Text css={{ cursor: "pointer" }} hover="fade" as="h6" size="h6">
                 {status}
               </Text>
             </a>
@@ -35,13 +36,13 @@ const TrackListPlaceHolder = ({ status }: Props) => {
                 justify="center"
                 align="center"
                 css={{
-                  width: '8px',
-                  height: '8px',
-                  borderRadius: '4px',
-                  backgroundColor: '$gray9',
-                  fontSize: '10px',
-                  padding: '10px',
-                  color: '$gray1',
+                  width: "8px",
+                  height: "8px",
+                  borderRadius: "4px",
+                  backgroundColor: "$gray9",
+                  fontSize: "10px",
+                  padding: "10px",
+                  color: "$gray1",
                 }}
               >
                 L
@@ -49,10 +50,10 @@ const TrackListPlaceHolder = ({ status }: Props) => {
               <Text
                 hover="dark"
                 css={{
-                  cursor: 'pointer',
-                  transition: 'color 0.3s ease-in-out',
-                  '&:hover': {
-                    color: '$gray12',
+                  cursor: "pointer",
+                  transition: "color 0.3s ease-in-out",
+                  "&:hover": {
+                    color: "$gray12",
                   },
                 }}
                 color="faded"
