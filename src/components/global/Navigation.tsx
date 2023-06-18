@@ -1,11 +1,12 @@
-import { Container } from '@components/ui/Container';
-import { Text } from '@components/ui/Text';
-import { styled, theme } from '../../../stitches.config';
-import { Box } from '@components/ui/Box';
-import Link from 'next/link';
-import { Button } from '@components/ui/Button';
-import { signOut, useSession } from 'next-auth/react';
-import Avatar from './Avatar';
+import React from "react";
+import { Container } from "@components/ui/Container";
+import { Text } from "@components/ui/Text";
+import { styled } from "../../../stitches.config";
+import { Box } from "@components/ui/Box";
+import Link from "next/link";
+import { Button } from "@components/ui/Button";
+import { signOut, useSession } from "next-auth/react";
+import Avatar from "./Avatar";
 
 const Navigation = () => {
   const { data: session } = useSession();
@@ -16,22 +17,27 @@ const Navigation = () => {
         flex="row"
         align="center"
         css={{
-          height: '100%',
+          height: "100%",
         }}
       >
         <Box flex="row" align="center" justify="between" full>
-          <Text
-            css={{
-              letterSpacing: '-8px',
-            }}
-            uppercase
-            as="h4"
-            size="h4"
+          <Link
+            style={{ display: "flex", alignItems: "center", gap: "2px" }}
+            href="/"
           >
-            sazaana
-          </Text>
+            <Box bg="primary" padding="sm" radius="sm" css={{ px: "$md" }}>
+              <Text
+                fontWeight="700"
+                css={{
+                  color: "$white",
+                }}
+              >
+                SAZAANA
+              </Text>
+            </Box>
+          </Link>
           <Box>
-            <ul style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+            <ul style={{ display: "flex", gap: "8px", alignItems: "center" }}>
               <li>
                 {session ? (
                   <Button onClick={() => signOut()} variant="black">
@@ -62,6 +68,6 @@ const Navigation = () => {
 
 export default Navigation;
 
-const Nav = styled('nav', {
-  height: '4rem',
+const Nav = styled("nav", {
+  height: "4rem",
 });

@@ -1,48 +1,45 @@
-import { render, screen } from '@testing-library/react';
-import SearchResults from '@components/home/SearchResults';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import SearchResults from "@components/home/SearchResults";
 
-describe('SearchResults', () => {
+describe("SearchResults", () => {
   const items = [
     {
       external_urls: {
-        spotify: "https://open.spotify.com/artist/4gzpq5DPGxSnKTe4SA8HAU"
+        spotify: "https://open.spotify.com/artist/4gzpq5DPGxSnKTe4SA8HAU",
       },
       followers: {
         href: null,
-        total: 30857540
+        total: 30857540,
       },
-      genres: [
-        "dance pop",
-        "pop",
-        "post-teen pop"
-      ],
+      genres: ["dance pop", "pop", "post-teen pop"],
       href: "https://api.spotify.com/v1/artists/4gzpq5DPGxSnKTe4SA8HAU",
       id: "4IWBUUAFIplrNtaOHcJPRM",
       images: [
         {
           height: 640,
           url: "https://i.scdn.co/image/ab6761610000e5ebba56f45d45483d8f1a30a58b",
-          width: 640
+          width: 640,
         },
         {
           height: 320,
           url: "https://i.scdn.co/image/ab67616100005174ba56f45d45483d8f1a30a58b",
-          width: 320
+          width: 320,
         },
         {
           height: 160,
           url: "https://i.scdn.co/image/ab6761610000f178ba56f45d45483d8f1a30a58b",
-          width: 160
-        }
+          width: 160,
+        },
       ],
       name: "James Arthur",
       popularity: 92,
       type: "artist",
-      uri: "spotify:artist:4gzpq5DPGxSnKTe4SA8HAU"
-    }
+      uri: "spotify:artist:4gzpq5DPGxSnKTe4SA8HAU",
+    },
   ];
 
-  it('renders the items', () => {
+  it("renders the items", () => {
     render(<SearchResults items={items} setResultsOpen={() => { }} />);
     const itemNames = screen.getAllByText(/James/);
     expect(itemNames).toHaveLength(items.length);
@@ -56,10 +53,10 @@ describe('SearchResults', () => {
   //   expect(setResultsOpen).toHaveBeenCalledWith(false);
   // });
   //
-  it('navigates to the artist page when an item is clicked', () => {
+  it("navigates to the artist page when an item is clicked", () => {
     render(<SearchResults items={items} setResultsOpen={() => { }} />);
-    const itemLink = screen.getByAltText('James Arthur');
+    const itemLink = screen.getByAltText("James Arthur");
     itemLink.click();
-    expect(window.location.pathname).toBe('/playlist/4gzpq5DPGxSnKTe4SA8HAU');
+    expect(window.location.pathname).toBe("/playlist/4gzpq5DPGxSnKTe4SA8HAU");
   });
 });

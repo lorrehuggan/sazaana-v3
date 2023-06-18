@@ -1,3 +1,4 @@
+import React from "react";
 import { Text } from "@components/ui/Text";
 import { truncateString } from "@utils/index";
 import Link from "next/link";
@@ -5,9 +6,6 @@ import * as HoverCard from "@radix-ui/react-hover-card";
 import { HoverCardArrow, HoverCardContent } from "@components/ui/HoverCard";
 import { api } from "@utils/api";
 import { useState } from "react";
-import { Box } from "@components/ui/Box";
-import { intToString } from "@utils/index";
-import { Button } from "@components/ui/Button";
 import HoverContent from "@components/ui/HoverContent";
 
 interface Props {

@@ -1,3 +1,4 @@
+import React from "react";
 import ArtistImage from "@components/playlist/ArtistImage";
 import { Box } from "@components/ui/Box";
 import { Container } from "@components/ui/Container";
@@ -5,11 +6,9 @@ import { Text } from "@components/ui/Text";
 import { api } from "@utils/api";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import * as HoverCard from "@radix-ui/react-hover-card";
-import { useState } from "react";
+import { truncateString } from "@utils/index";
 
 const Following = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const { data: session } = useSession();
 
   const { data, isLoading, isError } =
@@ -21,9 +20,9 @@ const Following = () => {
 
   return (
     <>
-      <Container size="lg" mt="md">
-        <Text as="h5" size="h5">
-          {`${session.user?.name} favorite artist`}
+      <Container size="lg" mt="lg">
+        <Text color="faded" as="h5" size="h6">
+          {`Favorite artist`}
         </Text>
       </Container>
       <Container
@@ -35,7 +34,7 @@ const Following = () => {
           },
         }}
         as="section"
-        pt="lg"
+        pt="sm"
         pb="lg"
         size="lg"
         gap="sm"
@@ -44,23 +43,42 @@ const Following = () => {
         {data &&
           data?.map((artist) => {
             return (
-              <Link href={`/playlist/${artist.id}`} key={artist.id}>
-                <Box
-                  css={{
-                    minWidth: "100px",
-                    cursor: "pointer",
-                  }}
-                >
-                  {artist.images[2] && (
-                    <ArtistImage
-                      url={artist.images[2].url}
-                      width={100}
-                      height={100}
-                      name={artist.name}
-                    />
-                  )}
-                </Box>
-              </Link>
+              <Box flex="column" key={artist.id} spaceY="sm">
+                <Link href={`/playlist/${artist.id}`}>
+                  <Text
+                    hover="dark"
+                    css={{
+                      cursor: "pointer",
+                      transition: "color 0.3s ease-in-out",
+                      "&:hover": {
+                        color: "$gray12",
+                      },
+                    }}
+                    color="faded"
+                    as="p"
+                    size="p"
+                  >
+                    {truncateString(artist.name, 13)}
+                  </Text>
+                </Link>
+                <Link href={`/playlist/${artist.id}`}>
+                  <Box
+                    css={{
+                      minWidth: "100px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {artist.images[2] && (
+                      <ArtistImage
+                        url={artist.images[2].url}
+                        width={100}
+                        height={100}
+                        name={artist.name}
+                      />
+                    )}
+                  </Box>
+                </Link>
+              </Box>
             );
           })}
       </Container>

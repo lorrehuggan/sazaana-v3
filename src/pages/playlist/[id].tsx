@@ -1,5 +1,5 @@
+import React from "react";
 import { type GetServerSideProps, type NextPage } from "next";
-import { NextSeo } from "next-seo";
 import MainLayout from "@components/layout/MainLayout";
 import Heading from "@components/home/Heading";
 import Search from "@components/home/Search";
@@ -9,6 +9,7 @@ import PlaylistBody from "@components/playlist/PlaylistBody";
 import { useCurrentArtistStore } from "@state/currentArtist";
 import { useEffect } from "react";
 import Following from "@components/user/Following";
+import { useSession } from "next-auth/react";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { id } = ctx.query;
@@ -24,10 +25,10 @@ interface Props {
   id: string;
 }
 
-const Playlist: NextPage<Props> = ({ id }) => {
+const Playlist: NextPage<Props> = ({ id }: Props) => {
+  const { data: session } = useSession();
   const setId = useCurrentArtistStore((state) => state.setId);
-  const { data: currentArtistData, isLoading: currentArtistLoading } =
-    api.artistRouter.getByID.useQuery({ id });
+  const { data: currentArtistData } = api.artistRouter.getByID.useQuery({ id });
 
   useEffect(() => {
     setId(id);
@@ -35,11 +36,17 @@ const Playlist: NextPage<Props> = ({ id }) => {
 
   return (
     <>
-      <MainLayout title={`${currentArtistData?.name} | Sazaana`}>
+      <MainLayout
+        title={
+          currentArtistData
+            ? `${currentArtistData?.name} | Sazaana`
+            : "Sazaana..."
+        }
+      >
         <Heading />
         <Search />
         <CurrentArtistCard />
-        <Following />
+        {session && <Following />}
         <PlaylistBody />
       </MainLayout>
     </>

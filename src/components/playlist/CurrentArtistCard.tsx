@@ -1,11 +1,8 @@
-import Image from 'next/image';
-import { Box } from '@components/ui/Box';
-import { Container } from '@components/ui/Container';
-import { Text } from '@components/ui/Text';
-import { intToString } from '@utils/index';
-import { api } from '@utils/api';
-import { useCurrentArtistStore } from '@state/currentArtist';
-import ArtistCard from './ArtistCard';
+import React from "react";
+import { Container } from "@components/ui/Container";
+import { api } from "@utils/api";
+import { useCurrentArtistStore } from "@state/currentArtist";
+import ArtistCard from "./ArtistCard";
 
 const CurrentArtistCard = () => {
   const id = useCurrentArtistStore((state) => state.id);
@@ -23,10 +20,10 @@ const CurrentArtistCard = () => {
     <>
       <Container
         css={{
-          '@md': {
-            mt: '$lg',
+          "@md": {
+            mt: "$lg",
           },
-          gap: '$md',
+          gap: "$md",
         }}
         as="section"
         mt="xl"

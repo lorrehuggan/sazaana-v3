@@ -28,7 +28,7 @@ const defaultTags = [
   "playlist generator",
 ];
 
-const HomeLayout: FC<Props> = ({
+const LoginLayout: FC<Props> = ({
   children,
   title,
   description = defaultDescription,
@@ -37,7 +37,7 @@ const HomeLayout: FC<Props> = ({
   return (
     <>
       <NextSeo
-        title={title || "Sazaana"}
+        title={title}
         description={description}
         additionalMetaTags={[
           {
@@ -46,15 +46,17 @@ const HomeLayout: FC<Props> = ({
           },
         ]}
       />
-      <Navigation />
       <Main>{children}</Main>
       <Footer />
     </>
   );
 };
 
-export default HomeLayout;
+export default LoginLayout;
 
 const Main = styled("main", {
-  minHeight: "calc(100vh - 8rem)",
+  minHeight: "calc(100vh - 4rem)",
+  justifyContent: "center",
+  alignItems: "center",
+  display: "flex",
 });

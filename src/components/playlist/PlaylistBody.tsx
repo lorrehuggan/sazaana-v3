@@ -1,11 +1,12 @@
-import { Container } from '@components/ui/Container';
-import { useEffect } from 'react';
-import { useCurrentArtistStore } from '@state/currentArtist';
-import { useCurrentPlaylistStore } from '@state/currentPlaylist';
-import { api } from '@utils/api';
-import Menu from './Menu';
-import Tracklist from './Tracklist';
-import { Text } from '@components/ui/Text';
+import React from "react";
+import { Container } from "@components/ui/Container";
+import { useEffect } from "react";
+import { useCurrentArtistStore } from "@state/currentArtist";
+import { useCurrentPlaylistStore } from "@state/currentPlaylist";
+import { api } from "@utils/api";
+import Menu from "./Menu";
+import Tracklist from "./Tracklist";
+import { Text } from "@components/ui/Text";
 
 const PlaylistBody = () => {
   const id = useCurrentArtistStore((state) => state.id);
@@ -47,8 +48,8 @@ const PlaylistBody = () => {
     <>
       <Container
         css={{
-          '@lg': {
-            flexDirection: 'column',
+          "@lg": {
+            flexDirection: "column",
           },
         }}
         flex="row"

@@ -1,7 +1,8 @@
-import { Box } from '@components/ui/Box';
-import { Text } from '@components/ui/Text';
-import { truncateString } from '@utils/index';
-import Link from 'next/link';
+import React from "react";
+import { Box } from "@components/ui/Box";
+import { Text } from "@components/ui/Text";
+import { truncateString } from "@utils/index";
+import Link from "next/link";
 
 interface Props {
   trackHref: string;
@@ -22,8 +23,8 @@ const TrackTitle = ({
   return (
     <Box width="half" flex="column" justify="center" spaceY="xs">
       <a href={trackHref}>
-        <Text css={{ cursor: 'pointer' }} hover="fade" as="h6" size="h6">
-          {truncateString(trackName?.split('(')[0]!, 26)}
+        <Text css={{ cursor: "pointer" }} hover="fade" as="h6" size="h6">
+          {truncateString(trackName?.split("(")[0]!, 26)}
         </Text>
       </a>
       <Box flex="row" align="center" gap="sm">
@@ -35,12 +36,12 @@ const TrackTitle = ({
             align="center"
             radius="sm"
             css={{
-              width: '8px',
-              height: '8px',
-              backgroundColor: '$gray9',
-              fontSize: '10px',
-              padding: '10px',
-              color: '$gray1',
+              width: "8px",
+              height: "8px",
+              backgroundColor: "$gray9",
+              fontSize: "10px",
+              padding: "10px",
+              color: "$gray1",
             }}
           >
             E
@@ -51,10 +52,10 @@ const TrackTitle = ({
             <Text
               hover="dark"
               css={{
-                cursor: 'pointer',
-                transition: 'color 0.3s ease-in-out',
-                '&:hover': {
-                  color: '$gray12',
+                cursor: "pointer",
+                transition: "color 0.3s ease-in-out",
+                "&:hover": {
+                  color: "$gray12",
                 },
               }}
               color="faded"
